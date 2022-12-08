@@ -1,0 +1,379 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+h3 {
+  text-decoration: 2px double underline;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.bg-image {
+  background-image: url("../assets/b.jpg");
+  height: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.searchBar {
+  display: flex;
+  position: relative;
+  left: 20%;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.search-form {
+  display: inline-block;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.sInput {
+  height: 50px;
+  border-radius: 10px;
+  width: 100%;
+  padding: 0px 15px 0px 15px;
+  color: white;
+  outline: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.searchBtn {
+  height: auto;
+  width: 18%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.searchBtn:hover {
+  background-color: white;
+  color: black;
+}
+
+.searchBtn:hover .seach-a {
+  color: black;
+}
+
+.seach-a {
+  text-decoration: none;
+  color: white;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 0.7; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+.searchWrapper {
+  display: none;
+  transition: 0.3s;
+}
+
+.see-more a {
+  text-decoration: none;
+}
+
+.see-more h2 {
+  color: red;
+  transition: 0.3s;
+}
+
+.see-more h2:hover {
+  color: #004080;
+}
+
+.cardHeaderText,
+.menu-header-text {
+  display: flex;
+  justify-content: center;
+}
+
+.cardContent {
+  margin-top: 17px;
+  display: flex;
+  justify-content: center;
+}
+
+.menuContent {
+  margin-top: 17px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.searchWrapper,
+.cardWrapper,
+.menu-wrapper {
+  display: block;
+}
+
+.menu-img-el {
+  width: 150px;
+  height: 100%;
+  margin-right: 15px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.menu-item {
+  display: flex;
+  /* height: 160px;
+  width: 400px; */
+  height: auto;
+  width: auto;
+  border: 2px solid white;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.menu-body {
+  position: relative;
+  display: block;
+  padding: 5px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.menu-title-wrapper {
+  height: auto;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+}
+
+.menu-sub-wrapper {
+  height: auto;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.menu-btn-wrapper {
+  display: block;
+  height: auto;
+  bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.menu-title-wrapper label {
+  font-size: 24px;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+
+.menu-sub-wrapper label {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+
+.buy-btn {
+  height: 50px;
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.buy-btn:hover {
+  background-color: orange;
+  border: 1px solid black;
+  color: black;
+}
+
+.cards-img-wrapper {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+.cards-title-center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.space {
+  width: 6%;
+}
+
+.cards {
+  position: relative;
+  display: block;
+  height: 200px;
+  /* width: 230px; */
+  width: auto;
+  aspect-ratio: 1 / 1;
+  background-image: url(../assets/loading.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.cards-body {
+  position: relative;
+  height: 75px;
+}
+
+.view-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.view-btn {
+  position: absolute;
+  height: 45px;
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  /* background-color: black; */
+  background: orange;
+  color: white;
+  cursor: pointer;
+  bottom: 50px;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+}
+
+.cardContent {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mobile-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Maker for screen size less than 820px */
+@media only screen and (max-width: 820px) {
+  .cardContent,
+  .menuContent {
+    display: block;
+    transition: 0.3s;
+  }
+
+  .mobile-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu-item {
+    height: 160px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .cards {
+    position: relative;
+    height: auto;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 50px;
+  }
+
+  .cards-title-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: 25px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .view-btn {
+    position: relative;
+    height: 50px;
+    bottom: 0;
+    transition: 0.3s;
+    margin-top: 51px;
+  }
+
+  .searchBar {
+    display: block;
+  }
+
+  .sInput {
+    height: 55px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    padding: none;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  .searchBtn {
+    height: 50px;
+    width: 100px;
+    float: right;
+    margin-top: 10px;
+  }
+}

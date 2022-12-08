@@ -1,0 +1,32 @@
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#menu {
+  font-size: 50px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+#search {
+  margin-left: 20px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+#menu:hover {
+  color: #ff8000;
+}
+
+#search:hover {
+  color: #ff8000;
+}
+
+.inputSearch {
+  height: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 30px;
+}

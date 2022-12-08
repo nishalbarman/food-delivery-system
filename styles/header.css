@@ -1,0 +1,123 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+h3 {
+  text-decoration: 2px double underline;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.bg-image {
+  background-image: url("../assets/b.jpg");
+  height: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.searchBar {
+  display: flex;
+  position: relative;
+  left: 20%;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.search-form {
+  display: inline-block;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.sInput {
+  height: 50px;
+  border-radius: 10px;
+  width: 100%;
+  padding: 0px 15px 0px 15px;
+  color: white;
+  outline: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.searchBtn {
+  height: auto;
+  width: 18%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.searchBtn:hover {
+  background-color: white;
+  color: black;
+}
+
+.searchBtn:hover .seach-a {
+  color: black;
+}
+
+.seach-a {
+  text-decoration: none;
+  color: white;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 0.7; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+/* Responsive Maker for screen size less than 820px */
+@media only screen and (max-width: 820px) {
+  .searchBar {
+    display: block;
+  }
+
+  .sInput {
+    height: 55px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    padding: none;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  .searchBtn {
+    height: 50px;
+    width: 100px;
+    float: right;
+    margin-top: 10px;
+  }
+}

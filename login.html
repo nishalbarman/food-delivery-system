@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tomato - Online food ordering portal</title>
+    <link rel="stylesheet" href="styles/login.css" />
+</head>
+
+<body>
+    <div class=" bg-image">
+    </div>
+
+    <!-- <div class="formWrapper"> -->
+    <div class="formWrapper">
+        <!-- <form action="api/login.php" method="post" enctype="application/x-www-form-urlencoded" id="login_form"> -->
+        <form id="loginForm">
+            <div class="inputWrapper">
+                <label>Phone No. :
+                    <span style="color: red; vertical-align: middle">*</span>
+                </label><br />
+                <input id="uid" type="number" name="uname" autocomplete="false" required />
+            </div>
+
+            <div class="inputWrapper">
+                <label>Password :
+                    <span style="color: red; vertical-align: middle">*</span>
+                </label><br />
+                <input id="pass" type="password" name="upass" autocomplete="false" required />
+            </div>
+
+            <div class="forgotWrapper">
+                <a class="forgot" href="#">Forgot Password?</a>
+            </div>
+            <br>
+
+
+        </form>
+        <div class="loginWrapper">
+            <!-- <center> -->
+            <!-- <input type="submit" class="submit" value="Login" name="submit" /> -->
+            <button id="loginBtn" class="submit">Login</button>
+            <!-- </center> -->
+        </div>
+        <div class="regWrapper" style="text-align: center">
+            <a class="register" href="register.html">Register!</a>
+        </div>
+    </div>
+    <!-- </div> -->
+    <script src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato - My Orders</title>
+    <link rel="stylesheet" href="styles/myaccount.css" />
+    <link rel="stylesheet" href="styles/sidenav.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-image">
+        <div id="navbar">
+
+            <div class="header">
+                <span class="menu" onclick="openNav()">&#9776;</span>
+                <a href="#" class="logo">Tomato</a>
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <img class="logoimg" src="assets/logo_tomato.png" />
+                <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
+                <a href="index.html">Home</a>
+                <a href="orders.html">My Orders</a>
+                <a href="myaccount.html">My Account</a>
+                <a href="logout.html" onclick="logOut()">LogOut</a>
+            </div>
+
+        </div>
+        <div class="searchBar">
+            <form id="search-form" class="search-form" role="search">
+                <input id="searchInput" class="sInput" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <button type="button" class="searchBtn"
+                onclick="smoothScroll(document.getElementById('order-list'))">Search</button>
+
+        </div>
+    </div>
+    <div id="main">
+        <div class="container">
+            <div class="side-bar">
+                <div class="user-info">
+                    <div class="user-img">
+                        <img src="user-pic/profile.webp" class="user-img-el" />
+                    </div>
+                    <div class="user-body">
+                        <div class="greeting">
+                            <label user-greeting>Hello</label><label>,</label>
+                        </div>
+                        <div class="user-name">
+                            <label user-name>Nishal Barman</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-details">
+                    <div class="profile-title">
+                        <a href="" class="myaccount-a">Profile Settings</a>
+                    </div>
+                    <div class="profile-address">
+                        <a href="" class="myaccount-a">Change Address</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-container">
+                <div class="info-container-title">
+                    <label info-container-title-el>Profile Settings</label>
+                </div>
+                <div class="user-data-container">
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="fadeout">&#x2192; First Name &#x2190;</label>
+                            <input name="fname" id="fname" type="text" class="inputs" />
+                        </div>
+                        <div class="gap"></div>
+                        <div class="inputWrapper">
+                            <label class="fadeout">&#x2192; Last Name &#x2190;</label>
+                            <input name="sname" id="sname" type="text" class="inputs" />
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Phone Number &#x2190;</label>
+                            <input name="fname" id="fname" type="text" class="inputs" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="js/myaccount.js"></script>
+    <script src="js/sidenav.js"></script>
+    <script>
+
+        window.smoothScroll = function (target) {
+            var scrollContainer = target;
+            do { //find scroll container
+                scrollContainer = scrollContainer.parentNode;
+                if (!scrollContainer) return;
+                scrollContainer.scrollTop += 1;
+            } while (scrollContainer.scrollTop == 0);
+
+            var targetY = 0;
+            do { //find the top of target relatively to the container
+                if (target == scrollContainer) break;
+                targetY += target.offsetTop;
+            } while (target = target.offsetParent);
+
+            scroll = function (c, a, b, i) {
+                i++; if (i > 30) return;
+                c.scrollTop = a + (b - a) / 30 * i;
+                setTimeout(function () { scroll(c, a, b, i); }, 20);
+            }
+            // start scrolling
+            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+        }
+    </script>
+</body>
+
+</html>

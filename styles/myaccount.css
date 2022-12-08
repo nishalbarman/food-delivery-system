@@ -1,0 +1,173 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+}
+
+.user-info {
+  display: flex;
+  justify-content: left;
+}
+
+.side-bar {
+  width: auto;
+  height: 100%;
+}
+
+.user-img-el {
+  width: 70px;
+  height: 70px;
+  border: 1px solid yellow;
+  border-radius: 60px;
+
+  padding: 6px 6px 0px 6px;
+}
+
+.user-body {
+  padding: 10px;
+  margin-left: 5px;
+  width: 100%;
+}
+
+.greeting label {
+  font-size: 16px;
+}
+
+.user-name label {
+  margin-top: 5px;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.user-info,
+.other-details {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #c9c9c9;
+  width: auto;
+}
+
+.other-details {
+  padding: 10px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px #c9c9c9;
+  width: 100%;
+}
+
+.other-title label {
+  font-size: 20px;
+}
+
+.info-container {
+  padding: 10px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px #c9c9c9;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.info-container-title label {
+  font-size: 20px;
+}
+
+.profile-title,
+.profile-address {
+  padding: 10px;
+}
+
+.profile-title {
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+}
+
+.profile-address {
+  border-bottom: 1px dotted black;
+}
+
+.myaccount-a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #004080;
+  font-weight: bold;
+}
+
+.myaccount-a:hover {
+  color: #000000;
+}
+
+.name {
+  display: flex;
+}
+
+.inputs {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.gap {
+  margin: 10px;
+}
+
+.user-data-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.inputWrapper {
+  position: relative;
+  padding: 5px;
+  border: 1px solid blue;
+  height: 42px;
+  margin-top: 20px;
+  width: 100%;
+  /* border: none; */
+  border-radius: 10px;
+  /* overflow: hidden; */
+  /* display: block; */
+}
+
+.inputWrapper label {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  transform: translate(-10%, -55%);
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #004080;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+}
+.phone {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  transform: translate(-5%, -55%);
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #004080;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

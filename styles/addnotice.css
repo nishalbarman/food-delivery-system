@@ -1,0 +1,155 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#main {
+    text-align: center;
+}
+
+h3 {
+    font-size: 27px;
+    text-align: left;
+}
+
+.col label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+    width: 150px;
+    margin-top: 11px;
+}
+
+.row {
+    margin-top: 27px;
+    display: inline-block;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    justify-content: center;
+    width: 80%;
+}
+
+.col {
+    margin-top: 15px;
+    display: flex;
+    text-align: left;
+}
+
+input[type="text"] {
+    height: 36px;
+    width: 100%;
+    outline: none;
+    border: 1px dashed black;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 18px;
+    -moz-appearance: textfield;
+}
+
+input[id="file-upload"] {
+    height: 31px;
+    outline: none;
+    width: 100%;
+    border: 1px dashed black;
+    padding-left: 8px;
+    padding-top: 9px;
+    font-size: 15px;
+}
+
+select {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border: 1px dashed black;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 18px;
+    -moz-appearance: textfield;
+}
+
+.file {
+    outline: none;
+    border: 1px dashed black;
+    border-radius: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.material-symbols-outlined:hover {
+    color: lightgreen;
+}
+
+.notification {
+    display: block;
+}
+
+.notification {
+    margin-top: 10px;
+}
+
+.notice {
+    padding-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px double #000080;
+    border-radius: 5px;
+    width: 85%;
+    height: 27px;
+    margin-bottom: 2px;
+    text-align: center;
+    background-color: #7fa8ff;
+}
+
+.sec {
+    top: 0;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px double #000080;
+    border-radius: 5px;
+    width: 84%;
+
+}
+
+.notice-content {
+    z-index: 1;
+    top: 0;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.nT {
+    height: auto;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+
+}
+
+.notice-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff0000;
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.4s;
+
+}
+
+.notice-text:hover {
+    color: #7fa8ff;
+}

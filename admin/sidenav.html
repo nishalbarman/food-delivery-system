@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/sidenav.css" />
+</head>
+
+<body>
+
+    <div class="header">
+        <span class="menu" onclick="openNav()">&#9776;</span>
+        <a href="#" class="logo">ADMIN PORTAL</a>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="addnotice.php">Add Notice</a>
+        <a href="addfaculty.php">Add Faculty</a>
+        <a href="logout.php" onclick="logOut()">LogOut</a>
+    </div>
+    <script src="js/sidenav.js"></script>
+</body>
+
+</html>

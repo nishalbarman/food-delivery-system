@@ -1,0 +1,191 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.bg-image {
+  background-image: url("../assets/food_landscape.png");
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.inputWrapper {
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.error_text {
+  display: none;
+  color: #80ffff;
+}
+
+.formWrapper {
+  display: inline-block;
+  justify-content: center;
+  text-align: left;
+  border-radius: 25px;
+  padding: 30px;
+  overflow: hidden;
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.submit {
+  font-size: 18px;
+  height: 50px;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: #ff8000;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  margin-top: 17px;
+  cursor: pointer;
+  margin-bottom: 13px;
+}
+
+.submit:hover {
+  /* box-shadow: 1px 1px 10px #000000; */
+  /* filter: drop-shadow(); */
+  background-color: #e17100;
+  transition: 0.2s;
+}
+
+.loginWrapper {
+  display: block;
+  text-align: center;
+}
+
+input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px dotted black;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 18px;
+  font-family: serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  
+  margin: 0;
+} */
+
+.forgotWrapper {
+  text-align: center;
+  padding-right: 7px;
+  margin-top: 13px;
+  margin-bottom: 4px;
+}
+
+.forgot,
+.register {
+  font-size: 13px;
+  color: #80ff80;
+  text-decoration: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-style: italic;
+}
+
+.forgot {
+  float: right;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.register {
+  color: yellow;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.regWrapper {
+  margin-top: 7px;
+}
+
+.register:hover,
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.loginWrapper {
+  padding: 0px 40px 0px 40px;
+}
+
+@media only screen and (max-width: 720px) {
+  .formWrapper {
+    padding: 30px;
+  }
+
+  .submit {
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+
+    margin-top: 17px;
+    cursor: pointer;
+    margin-bottom: 13px;
+  }
+
+  label {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .forgotWrapper {
+    text-align: center;
+    padding-right: 7px;
+    margin-top: 13px;
+    margin-bottom: 4px;
+  }
+
+  .register {
+    font-size: 10px;
+  }
+
+  .forgot {
+    font-size: 13px;
+  }
+
+  .register {
+    font-size: 13px;
+  }
+}
