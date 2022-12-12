@@ -246,7 +246,6 @@ function getMenu() {
           let spaceAdd = 0;
           for (let j = i; j < k; j++) {
             let obj = jsonObj[j];
-            // alert(obj.title);
             let menu = document.createElement("div");
 
             let menuImg = document.createElement("div");
@@ -378,4 +377,9 @@ function getCards() {
 function buyFood(id) {
   window.location =
     "http:///localhost/food/payu/index.php?id=" + id + "&userid=" + userid;
+  // fetch("http://localhost:1000/request", options)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
 }

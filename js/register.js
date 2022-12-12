@@ -1,27 +1,57 @@
-// Checking if the user already logged in or not;
 let loggedin = window.localStorage.getItem("authToken");
 if (loggedin !== "" && loggedin === "success") {
   window.location = "index.html";
 }
 
-// Geting the elements in form of variables
 const regBtn = document.getElementById("loginBtn");
+const otpBtn = document.getElementById("otpBtn");
 const uidEl = document.getElementById("uid");
 const passEl = document.getElementById("pass");
+const API = "http://localhost/food/api/send-mail.php";
+let otp;
 
-// Setting an click listener
-regBtn.addEventListener("click", regMe);
+regBtn.addEventListener("click", () => {
+  document.getElementById("formWrapper").style.display = "none";
+  document.getElementById("otpForm").style.display = "block";
+  let email = document.getElementById("email").value;
+  otp = Math.floor(100000 + Math.random() * 900000);
 
-// Onclick functiont to authenticate the login
-function regMe() {
-  // XMLHttpRequest object initialization
   const xhr = new XMLHttpRequest();
-  // Setting the method and url to the object
+
+  xhr.open("GET", API + "?email=" + email + "&otp=" + otp, true);
+
+  xhr.onload = function () {
+    if (this.status === 200) {
+      console.log(this.responseText);
+      let jsonObj = JSON.parse(this.responseText);
+      if (jsonObj.success === true) {
+        alert("Otp has been sent.");
+      } else {
+        alert("Otp failed.");
+      }
+    } else {
+      console.log("Error");
+    }
+  };
+
+  xhr.send();
+});
+
+otpBtn.addEventListener("click", () => {
+  let userOtp = document.getElementById("otp").value;
+  if (userOtp == otp) {
+    regMe();
+  } else {
+    document.getElementById("errorTxt").style.display = "block";
+    document.getElementById("otp").value = "";
+  }
+});
+
+function regMe() {
+  const xhr = new XMLHttpRequest();
   xhr.open("POST", "http://localhost/food/api/register.php", true);
-  // Setting the response header for the post method
   xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
 
-  // After getting the response setting the authentication.
   xhr.onload = function () {
     if (this.status === 200) {
       console.log(this.responseText);
@@ -31,15 +61,15 @@ function regMe() {
         window.localStorage.setItem("authToken", "success");
         window.localStorage.setItem("userId", jsonObj["userid"]);
         window.location = "index.html";
+      } else {
+        alert(jsonObj["message"]);
       }
     } else {
-      console.log("Error");
+      alert("Server error, Please try again later.");
     }
   };
 
-  // Geting the form data with form data
   let formData = new FormData(document.getElementById("loginForm"));
 
-  // Sending the request to the url
   xhr.send(formData);
 }

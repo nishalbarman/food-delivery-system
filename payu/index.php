@@ -29,15 +29,14 @@ $action = '';
 $formError = 0;
 
 if (empty($txnid)) {
-  // Generate random transaction id
   $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 }
 
 $hash = '';
-// Hash Sequence
 $hashSequence = $MERCHANT_KEY . "|" . $txnid . "|" . $amount . "|" . $food_title . "|" . $fname . "||" . $serial . "||||||||||" . $SALT;
 
 $hash = strtolower(hash('sha512', $hashSequence));
+
 $action = $PAYU_BASE_URL . '/_payment';
 
 ?>

@@ -4,17 +4,17 @@ include '../config/db.php';
 $phone = $_POST['uid'];
 $firstname = $_POST['ufname'];
 $lastname = $_POST['ulname'];
+$email = $_POST['email'];
 $address = $_POST['uaddress'];
 $password = $_POST['upass'];
 
 if ($conn->connect_errno) {
     sendJson(true, $conn->connect_error, '');
-    // error("Database Error, Please try again latter.");
 }
 
 check($phone, $conn);
 
-$sql = "INSERT INTO `users`(`phone`, `fname`, `lname`, `address`, `password`) VALUES ('$phone','$firstname','$lastname','$address','$password')";
+$sql = "INSERT INTO `users`(`phone`, `fname`, `lname`, `address`, `password`, `email`) VALUES ('$phone','$firstname','$lastname','$address','$password', '$email')";
 
 
 if (mysqli_query($conn, $sql)) {
@@ -45,7 +45,5 @@ function check($phone, $conn)
         }
     }
 }
-// INSERT INTO `users` (`id`, `phone`, `fname`, `lname`, `address`, `password`) VALUES ('1', '9101114906', 'Nishal', 'Barman', 'Vill./P.O. - Balikaria, Nalbari, Assam, 781341', '@NishalBoss21');
-
 
 ?>

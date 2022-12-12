@@ -15,7 +15,7 @@
     </div>
 
     <!-- <div class="formWrapper"> -->
-    <div class="formWrapper">
+    <div class="formWrapper" id="formWrapper">
         <!-- <form action="api/login.php" method="post" enctype="application/x-www-form-urlencoded" id="login_form"> -->
         <form id="loginForm">
             <div class="name-flex">
@@ -34,10 +34,17 @@
                 </div>
             </div>
             <div class="inputWrapper">
-                <label>Phone No. :
+                <label>Phone No. (Without +91) :
                     <span style="color: red; vertical-align: middle">*</span>
                 </label><br />
                 <input id="uid" type="number" name="uid" autocomplete="false" required />
+            </div>
+
+            <div class="inputWrapper">
+                <label>Email Address :
+                    <span style="color: red; vertical-align: middle">*</span>
+                </label><br />
+                <input id="email" type="email" name="email" autocomplete="false" required />
             </div>
 
             <div class="inputWrapper">
@@ -65,6 +72,26 @@
         <div class="regWrapper" style="text-align: center">
             <a class="register" href="login.html">Login!</a>
         </div>
+    </div>
+    <div class="formWrapper" id="otpForm" style="display: none;">
+
+        <form id="loginForm">
+            <div class="inputWrapper">
+                <lable id="errorTxt" style="color: red; font-weight: bold; display: none;">Invalid OTP</lable>
+                <br>
+                <label>OTP :
+                    <span style="color: red; vertical-align: middle">*</span>
+                </label><br />
+                <input id="otp" type="number" name="otp" autocomplete="false" required />
+            </div>
+        </form>
+        <div class="loginWrapper">
+            <!-- <center> -->
+            <!-- <input type="submit" class="submit" value="Login" name="submit" /> -->
+            <button id="otpBtn" class="submit">Verify</button>
+            <!-- </center> -->
+        </div>
+
     </div>
     <!-- </div> -->
     <script src="js/register.js"></script>

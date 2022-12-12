@@ -38,7 +38,8 @@ label {
   color: #80ffff;
 }
 
-.formWrapper {
+.formWrapper,
+.otpWrapper {
   display: inline-block;
   justify-content: center;
   text-align: left;
@@ -87,6 +88,7 @@ input {
   height: 45px;
   width: 100%;
   outline: none;
+  color: white;
   background-color: rgba(0, 0, 0, 0.4);
   border: 1px dotted black;
   border-radius: 10px;
@@ -101,11 +103,11 @@ input {
   margin: 0;
 }
 
-/* input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  
+  -webkit-appearance: none;
   margin: 0;
-} */
+}
 
 .forgotWrapper {
   text-align: center;
