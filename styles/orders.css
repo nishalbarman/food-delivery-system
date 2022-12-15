@@ -3,6 +3,10 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
+body {
+  background-color: #f0f0f0;
+}
+
 #order-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -13,10 +17,11 @@
   width: auto;
   height: auto;
   position: relative;
-  border: 1px solid #808080;
+  /* border: 1px solid #808080; */
   border-radius: 10px;
-  background-color: white;
+  background-color: #ffffff;
   margin-bottom: 28px;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
 }
 
 .order-top-header {
@@ -145,16 +150,18 @@
   height: 35px;
   width: 30%;
   margin-left: 10px;
-  border: none;
+  border: 1px solid #dd6f00;
   border-radius: 6px;
-  background-color: #ff8000;
-  color: #000000;
+  /* background-color: #ff8000; */
+  background-color: #ffffff;
+  color: #dd6f00;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
 }
 
 .order-details:hover {
   background-color: #dd6f00;
+  color: white;
 }

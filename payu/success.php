@@ -6,6 +6,7 @@ $action = "";
 $status = $_POST["status"];
 $firstname = $_POST["firstname"];
 $phone = $_POST["phone"];
+$email = $_POST["email"];
 $amount = $_POST["amount"];
 $txnid = $_POST["txnid"];
 $posted_hash = $_POST["hash"];
@@ -16,18 +17,14 @@ $salt = "72toOcfuXCBizlYLEGqvVYeIUnXLOGsY";
 $address = $_POST['address1'];
 $foodid = $_POST['udf1'];
 
-
-
 date_default_timezone_set("Asia/Calcutta");
 $date = date('d/m/Y h:i:s a', time());
 
-// Salt should be same Post Request 
-
 if (isset($_POST["additionalCharges"])) {
     $additionalCharges = $_POST["additionalCharges"];
-    $retHashSeq = $additionalCharges . '|' . $salt . '|' . $status . '||||||||||' . $foodid . '||' . $firstname . '|' . $productinfo . '|' . $amount . '|' . $txnid . '|' . $key;
+    $retHashSeq = $additionalCharges . '|' . $salt . '|' . $status . '||||||||||' . $foodid . '|' . $email . '|' . $firstname . '|' . $productinfo . '|' . $amount . '|' . $txnid . '|' . $key;
 } else {
-    $retHashSeq = $salt . '|' . $status . '||||||||||' . $foodid . '||' . $firstname . '|' . $productinfo . '|' . $amount . '|' . $txnid . '|' . $key;
+    $retHashSeq = $salt . '|' . $status . '||||||||||' . $foodid . '|' . $email . '|' . $firstname . '|' . $productinfo . '|' . $amount . '|' . $txnid . '|' . $key;
 }
 
 $hash = hash("sha512", $retHashSeq);
@@ -41,7 +38,7 @@ if ($hash != $posted_hash) {
         $foodsubtitle = $row['subtitle'];
         $foodimage = $row['image'];
     }
-    $sql = "INSERT INTO `orders` (`phone`, `fname`, `foodtitle`, `foodsubtitle`, `foodimage`, `address`,`amount`, `transactionid`, `ordertype`, `status`, `location`, `date`) VALUES ('$phone', '$firstname', '$productinfo', '$foodsubtitle', '$foodimage', '$address', '$amount', '$txnid', 'Prepaid', 'Pending', '$address', '$date');";
+    $sql = "INSERT INTO `orders` (`phone`, `fname`, `foodtitle`, `foodsubtitle`, `foodimage`, `address`,`amount`, `transactionid`, `ordertype`, `status`, `location`, `date`, `email`) VALUES ('$phone', '$firstname', '$productinfo', '$foodsubtitle', '$foodimage', '$address', '$amount', '$txnid', 'Prepaid', 'Pending', '$address', '$date', '$email');";
     $res = mysqli_query($conn, $sql);
 }
 ?>
@@ -50,86 +47,29 @@ if ($hash != $posted_hash) {
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        .content {
-            max-width: 500px;
-            margin: auto;
-            padding-left: 6px;
-            padding-right: 6px;
-            padding-top: 1px;
-
-        }
-
-        #clock {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #7CE46F;
-            margin: auto;
-        }
-
-        #seconds {
-            display: block;
-            width: 100%;
-            margin: auto;
-            padding-top: 18px;
-            text-align: center;
-            font-size: 40px;
-            color: white;
-        }
-
-        button {
-            background-color: #4CAF50;
-            /* Green */
-            border: 1px;
-            border-radius: 3px;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            -webkit-transition-duration: 0.4s;
-            /* Safari */
-            transition-duration: 0.4s;
-        }
-
-        p,
-        h4 {
-            color: green;
-        }
-
-        button:hover {
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/success.css">
 </head>
 
 <body>
-    <div class="content">
+    <div class="content-t">
+        <div class="content">
 
-        <center>
-            <h2 style="color: #3FB8D9;text-decoration: underline dotted #3FB8D9;">Order Successful</h2>
-            <p><span style='color:red; font-weight: bold; font-size: 15px'>Copy and save the transaction id for
-                    future reference.</span></p>
-        </center>
-        <h4>We have received a payment of Rs.
-            <?php echo $amount; ?>
-        </h4>
-        <p><span style="color: #FF9A00;">Your Transaction ID for this transaction is </span></p>
-        <p><span style='color:#2235DA;font-size: 20px; font-weight:bold'>
+            <lable class="order-r">Your order has been received
+            </lable>
+            <p></p>
+            <img src="../assets/verified.gif" style="width: 90px; height: 90px;" />
+            <p></p>
+            <label class="order-tq">Thank you for your purchase
+                !</label>
+            <p></p>
+            <label class="order-tra">Your transaction id is:&nbsp;
                 <?php echo $txnid; ?>
-            </span></p>
+            </label>
 
-        <br>
-        <center>
-            <!-- <label style="color:green;font-weight: bold; font-size: 20px;">...</label> -->
-            <button onclick="redirect()" id="button" class="button">My
-                Orders</button>
-        </center>
+            <br>
+
+            <button onclick="redirect()" id="button" class="button">MY ORDERS</button>
+        </div>
     </div>
     <script>
         function redirect() {

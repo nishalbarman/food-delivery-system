@@ -21,7 +21,7 @@ searchInput.addEventListener("input", (e) => {
     let t = user.title.toLowerCase();
     let s = user.subtitle.toLowerCase();
 
-    const isVisible = t.includes(value) || s.toLowerCase().includes(value);
+    const isVisible = t.includes(value) || s.includes(value);
 
     isVisible
       ? user.element.classList.remove("hide")
@@ -55,6 +55,10 @@ fetch("http://localhost/food/api/get-menu.php")
   });
 
 function buyFood(id) {
-  window.location =
-    "http:///localhost/food/payu/index.php?id=" + id + "&userid=" + userid;
+  if (!(loggedin !== "" && loggedin === "success")) {
+    window.location = "login.html";
+  } else {
+    window.location =
+      "http:///localhost/food/payu/index.php?id=" + id + "&email=" + email;
+  }
 }

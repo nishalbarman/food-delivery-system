@@ -1,9 +1,9 @@
 <?php
 include '../config/db.php';
 
-$userid = $_POST['phone'];
+$userid = $_POST['email'];
 
-$sql = "select * from orders where phone = '$userid'";
+$sql = "select * from orders where email = '$userid'";
 $result = mysqli_query($conn, $sql);
 $count = mysqli_num_rows($result);
 $data = array();

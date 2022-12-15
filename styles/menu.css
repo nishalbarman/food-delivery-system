@@ -107,7 +107,7 @@ h3 {
 
 #menu-card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   position: relative;
   gap: 10px;
   /* margin: 0; */
@@ -130,6 +130,8 @@ h3 {
 .menu-img-el {
   height: 100%;
   width: 150px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .menu-body {

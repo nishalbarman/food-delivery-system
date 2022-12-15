@@ -5,8 +5,13 @@ include '../config/db.php';
 session_start();
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    header("location: ./login.php");
     exit;
+} else {
+    if ($_SESSION['role'] !== 'admin') {
+        header("location: ./login.php");
+        exit;
+    }
 }
 
 $sql = "SELECT * FROM `fooditems`";
@@ -29,8 +34,9 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <div class="content" id="main">
 
         <h1 class="my-5">Hi <b>
-                <?php echo htmlspecialchars($_SESSION["username"]); ?>
-            </b>, Welcome back..</h1>
+                <?php echo ucwords(strtolower(str_replace("_", " ", htmlspecialchars($_SESSION["username"])))); ?>
+
+            </b>, Welcome back !</h1>
         <div style="overflow-x:auto;">
             <div id="order-list" order-cards>
 
@@ -101,7 +107,8 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 <label>Remove</label>
                             </div>
                             <div class="row" style="text-align: center; margin-top: 4px;">
-                                <a class="delete" href="delete.php?id=<?php echo $file['id'] ?>"><img
+                                <a class="delete"
+                                    href="delete.php?id=<?php echo $file['id'] . "&image=" . $file['image']; ?>"><img
                                         style="width: 25px; height: 25px;" src="assets/remove.png" /></a>
                             </div>
                         </div>

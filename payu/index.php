@@ -11,11 +11,12 @@ while ($row = mysqli_fetch_assoc($res)) {
   $amount = $row['amount'];
 }
 
-$sql = "select * from users where phone = '$userid'";
+$sql = "select * from users where email = '$userid'";
 $res = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($res)) {
   $fname = $row['fname'];
   $address = $row['address'];
+  $phone = $row['phone'];
 }
 
 
@@ -33,7 +34,7 @@ if (empty($txnid)) {
 }
 
 $hash = '';
-$hashSequence = $MERCHANT_KEY . "|" . $txnid . "|" . $amount . "|" . $food_title . "|" . $fname . "||" . $serial . "||||||||||" . $SALT;
+$hashSequence = $MERCHANT_KEY . "|" . $txnid . "|" . $amount . "|" . $food_title . "|" . $fname . "|" . $userid . "|" . $serial . "||||||||||" . $SALT;
 
 $hash = strtolower(hash('sha512', $hashSequence));
 
@@ -70,13 +71,14 @@ $action = $PAYU_BASE_URL . '/_payment';
     <input type="hidden" name="amount" value="<?php echo $amount; ?>" />
     <input type="hidden" name="firstname" id="firstname" value="<?php echo $fname; ?>" />
     <input type="hidden" name="email" id="email" value="<?php echo ''; ?>" />
-    <input type="hidden" name="phone" value="<?php echo $userid; ?>" />
+    <input type="hidden" name="phone" value="<?php echo $phone; ?>" />
     <input type="hidden" name="address1" value="<?php echo $address; ?>" />
+    <input type="hidden" name="email" value="<?php echo $userid; ?>" />
     <input type="hidden" name="productinfo" value="<?php echo $food_title; ?>" />
     <input type="hidden" name="udf1" value="<?php echo $serial; ?>" />
 
     <input type="hidden" name="surl" value="http://localhost/food/payu/success.php" size="64" />
-    <input type="hidden" name="furl" value="http://localhost/food/payu/success.php" size="64" />
+    <input type="hidden" name="furl" value="http://localhost/food/payu/failure.php" size="64" />
 
     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
     <?php if (1 == 0) { ?>

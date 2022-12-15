@@ -21,7 +21,7 @@ function logMe() {
       if (jsonObj["success"] === true) {
         alert("Login Successfull");
         window.localStorage.setItem("authToken", "success");
-        window.localStorage.setItem("userId", jsonObj["userid"]);
+        window.localStorage.setItem("userId", jsonObj["email"]);
         window.location = "index.html";
       }
     } else {

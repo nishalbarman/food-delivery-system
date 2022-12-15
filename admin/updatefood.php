@@ -14,7 +14,7 @@ $sql = "select * from fooditems where id = '$idd'";
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $image = $row['image'];
+    $old_image = $row['image'];
     $title = $row['title'];
     $subtitle = $row['subtitle'];
     $stocks = $row['stocks'];
@@ -23,10 +23,12 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
-    if (isset($_FILES['myfile']['name'])) {
+
+    if (isset($_FILES['myfile']['name']) && $_FILES['myfile']['name'] !== '') {
         $image = time() . '_' . $_FILES['myfile']['name'];
         $file = $_FILES['myfile']['tmp_name'];
         $destination = '../food-images/' . $image;
+        $extension = pathinfo($image, PATHINFO_EXTENSION);
         $move = 1;
     } else {
         $move = 0;
@@ -36,14 +38,14 @@ if (isset($_POST['submit'])) {
     $stocks = $_POST['stocks'];
     $amount = $_POST['amount'];
 
-    $extension = pathinfo($image, PATHINFO_EXTENSION);
-
-    if (!in_array($extension, ['png', 'jpg', 'jpeg', 'webp'])) {
-        echo "You file extension must be .png, .jpg, .webp or .jpeg";
-    } else {
-
-        if ($move === 1) {
+    if ($move === 1) {
+        if (!in_array($extension, ['png', 'jpg', 'jpeg', 'webp'])) {
+            echo "You file extension must be .png, .jpg, .webp or .jpeg";
+        } else {
             if (move_uploaded_file($file, $destination)) {
+                if (!$old_image) {
+                    unlink("../food-images/" . $old_image);
+                }
                 $sql = "UPDATE `fooditems` SET `title`='$title',`subtitle`='$subtitle',`stocks`='$stocks',`amount`='$amount',`image`='$image' WHERE id = '$id'";
                 if (mysqli_query($conn, $sql)) {
                     echo "<script>alert('Food Updated.');</script>";
@@ -53,15 +55,16 @@ if (isset($_POST['submit'])) {
             } else {
                 echo "<script>alert('Failed to update.');</script>";
             }
+        }
+    } else {
+        $sql = "UPDATE `fooditems` SET `title`='$title',`subtitle`='$subtitle',`stocks`='$stocks',`amount`='$amount' WHERE id = '$id'";
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>alert('Food Updated.');</script>";
         } else {
-            $sql = "UPDATE `fooditems` SET `title`='$title',`subtitle`='$subtitle',`stocks`='$stocks',`amount`='$amount' WHERE id = '$id'";
-            if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Food Updated.');</script>";
-            } else {
-                echo "<script>alert('Failed to update.');</script>";
-            }
+            echo "<script>alert('Failed to update.');</script>";
         }
     }
+
 }
 
 ?>
@@ -89,7 +92,7 @@ if (isset($_POST['submit'])) {
                 <textarea type="number" id="subtitle" name="subtitle"
                     placeholder="Subtitle"><?php echo $subtitle; ?></textarea>
 
-                <label>Choose Image</label>
+                <label>Choose Image (Optional)</label>
                 <input class="file_up" type="file" name="myfile"> <br>
 
                 <label for="stocks">Stocks</label>

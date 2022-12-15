@@ -152,7 +152,7 @@ h3 {
   display: flex;
   /* height: 160px;
   width: 400px; */
-  height: auto;
+  height: 160px;
   width: auto;
   border: 2px solid white;
   border-radius: 10px;
