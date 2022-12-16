@@ -32,7 +32,7 @@ getMenu();
 function getMenu() {
   const menuTemplate = document.querySelector("[data-menu-template]");
   const menuCards = document.querySelector("[menu-cards]");
-  fetch("http://localhost/food/api/get-menu.php")
+  fetch("./api/get-menu.php")
     .then((res) => res.json())
     .then((data) => {
       users = data.map((user) => {
@@ -42,7 +42,7 @@ function getMenu() {
         const subtitle = menu.querySelector("[data-subtitle]");
         const button = menu.querySelector("[data-button]");
 
-        img.src = "http://localhost/food/food-images/" + user.image;
+        img.src = "./food-images/" + user.image;
         title.textContent = user.title;
         subtitle.textContent = user.subtitle;
         button.textContent = user.amount + " /-";
@@ -60,7 +60,7 @@ function getMenu() {
 
 function getCards() {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://localhost/food/api/get-cards.php", true);
+  xhr.open("GET", "./api/get-cards.php", true);
   xhr.onload = function () {
     if (this.status === 200) {
       // console.log(this.responseText);
@@ -112,7 +112,7 @@ function getCards() {
         console.log("card" + obj.id + " " + obj.title);
 
         let id = "card" + obj.id;
-        let image = "http://localhost/food/food-images/" + obj.image;
+        let image = "./food-images/" + obj.image;
         document.getElementById(id).style.backgroundImage =
           "url('" + image + "')";
       });
@@ -126,7 +126,6 @@ function buyFood(id) {
   if (!(loggedin !== "" && loggedin === "success")) {
     alert("Need to be logged in to place an order.");
   } else {
-    window.location =
-      "http:///localhost/food/payu/index.php?id=" + id + "&userid=" + userid;
+    window.location = "./payu/index.php?id=" + id + "&userid=" + userid;
   }
 }

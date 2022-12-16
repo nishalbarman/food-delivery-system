@@ -3,7 +3,7 @@ if (loggedin !== "" && loggedin === "success") {
   window.location = "index.html";
 }
 
-const API = "http://localhost/food/api/send-mail.php";
+const API = "./api/send-mail.php";
 
 const logBtn = document.getElementById("loginBtn");
 const regBtn = document.getElementById("regBtn");
@@ -83,7 +83,7 @@ otpBtn.addEventListener("click", () => {
 
 function regMe() {
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost/food/api/register.php", true);
+  xhr.open("POST", "./api/register.php", true);
   xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {
@@ -110,7 +110,7 @@ function regMe() {
 
 function logMe() {
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost/food/api/login.php", true);
+  xhr.open("POST", "./api/login.php", true);
   xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {

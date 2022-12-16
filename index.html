@@ -6,14 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato - Food order online</title>
-    <link rel="stylesheet" href="styles/index.css" />
-    <link rel="stylesheet" href="styles/sidenav.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/sidenav.css" />
     <script>
         function logOut() {
             window.localStorage.setItem("authToken", '');
             window.localStorage.setItem("userId", '');
         }
     </script>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,11 +48,11 @@
 
         </div>
         <div class="searchBar">
-            <form id="search-form" class="search-form">
+            <form id="search-form" class="search-form" role="search" action="#">
                 <input class="sInput" type="search" placeholder="Search" aria-label="Search">
             </form>
             <button type="button" class="searchBtn"
-                onclick="smoothScroll(document.getElementById('searchContainer'))">Search</button>
+                onclick="smoothScroll(document.getElementById('menu-card'))">Search</button>
             <!--  -->
         </div>
     </div>
@@ -72,7 +77,6 @@
 
         </div>
         <div style="height: 60px;"></div>
-
 
         <!-- Menu Option -->
         <div id="menuWrapper" class="menu-wrapper">
@@ -105,7 +109,7 @@
             </template>
 
             <div class="see-more">
-                <a href="menu.html">
+                <a href="./menu.html">
                     <h2 style="text-align:center;">See More</h2>
                 </a>
             </div>
@@ -114,8 +118,8 @@
 
 
     </div>
-    <script src="js/index.js"></script>
-    <script src="js/sidenav.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/sidenav.js"></script>
     <script>
         window.smoothScroll = function (target) {
             var scrollContainer = target;

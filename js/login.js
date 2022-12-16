@@ -11,7 +11,7 @@ logBtn.addEventListener("click", logMe);
 
 function logMe() {
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost/food/api/login.php", true);
+  xhr.open("POST", "./api/login.php", true);
   xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {

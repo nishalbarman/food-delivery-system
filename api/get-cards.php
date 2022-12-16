@@ -1,4 +1,5 @@
-<?php include '../config/db.php';
+<?php
+include './../config/db.php';
 
 $sql = 'select * from cards limit 4';
 
