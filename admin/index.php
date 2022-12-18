@@ -16,7 +16,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 $sql = "SELECT * FROM `fooditems`";
 $result = mysqli_query($conn, $sql);
-$files = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$fooditems = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
@@ -42,7 +42,7 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                 <?php
 
-                foreach ($files as $file): ?>
+                foreach ($fooditems as $file): ?>
                 <div class="order-item">
 
                     <div class="order-top-header">

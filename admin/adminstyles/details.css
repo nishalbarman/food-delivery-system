@@ -1,0 +1,114 @@
+h1 {
+  font-size: 1.5em;
+  color: #222;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 2.2em;
+  font-weight: 300;
+  line-height: 2em;
+}
+p {
+  font-size: 1em;
+  color: #666;
+  line-height: 1.2em;
+}
+
+#top,
+#mid,
+#bot {
+  border-bottom: 1px solid #eee;
+}
+
+#top {
+  min-height: 100px;
+}
+#mid {
+  min-height: 80px;
+}
+#bot {
+  min-height: 50px;
+}
+
+#top .logo {
+  height: 60px;
+  width: 60px;
+  background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
+  background-size: 60px 60px;
+}
+.clientlogo {
+  float: left;
+  height: 60px;
+  width: 60px;
+  background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
+  background-size: 60px 60px;
+  border-radius: 50px;
+}
+.info {
+  display: block;
+  margin-left: 0;
+}
+.title {
+  float: right;
+}
+.title p {
+  text-align: right;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabletitle {
+  font-size: 0.6em;
+  background: #eee;
+}
+.service {
+  border-bottom: 1px solid #eee;
+}
+.item {
+  width: 24mm;
+}
+
+.itemtext {
+  font-size: 1em;
+  width: 100%;
+}
+
+.below-btn {
+  margin-top: 5mm;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  /* padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px; */
+}
+
+.view-details {
+  height: 40px;
+  width: 40%;
+
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border: 1px solid #dd6f00;
+  border-radius: 6px;
+
+  background-color: #ffffff;
+  color: #dd6f00;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.view-details:hover {
+  background-color: #dd6f00;
+  color: white;
+}

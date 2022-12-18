@@ -78,7 +78,7 @@ $action = $PAYU_BASE_URL . '/_payment';
     <input type="hidden" name="udf1" value="<?php echo $serial; ?>" />
 
     <input type="hidden" name="surl" value="http://localhost/food/payu/success.php" size="64" />
-    <input type="hidden" name="furl" value="http://localhost/food/payu/failure.php" size="64" />
+    <input type="hidden" name="furl" value="http://localhost/food/payu/success.php" size="64" />
 
     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
     <?php if (1 == 0) { ?>

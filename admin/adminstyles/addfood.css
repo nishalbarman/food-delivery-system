@@ -90,3 +90,61 @@ textarea {
   font-size: 20px;
   color: green;
 }
+
+/* .cattable {
+  width: 100%;
+} */
+
+tr {
+  margin-top: 10px;
+}
+
+.tbl {
+  display: flex;
+  justify-content: center;
+}
+
+.cattable {
+  border-collapse: collapse;
+  margin: 0px auto;
+  margin-bottom: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+}
+
+.cattable td,
+.cattable th {
+  border: 1px solid #ddd;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.cattable td {
+  font-weight: bold;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.cattable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.cattable tr:hover {
+  background-color: #ddd;
+}
+
+.cattable th {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  text-align: left;
+  background-color: #4fbfcd;
+  /* background-color: #04AA6D; */
+  color: white;
+}
+
+.my-6 {
+  margin-bottom: 1.2rem;
+  text-align: center;
+
+  text-decoration: 2px dotted underline;
+}

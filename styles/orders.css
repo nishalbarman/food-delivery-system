@@ -17,7 +17,6 @@ body {
   width: auto;
   height: auto;
   position: relative;
-  /* border: 1px solid #808080; */
   border-radius: 10px;
   background-color: #ffffff;
   margin-bottom: 28px;
@@ -101,6 +100,7 @@ body {
 .order-body-content {
   display: flex;
   justify-content: left;
+  height: 110px;
 }
 
 .order-image-container {
