@@ -82,7 +82,7 @@ function buyFood(id) {
     window.location = "login.html";
   } else {
     window.location =
-      "http:///localhost/food/payu/index.php?id=" + id + "&email=" + email;
+      "http:///localhost/food/payu/index.php?id=" + id + "&userid=" + userid;
   }
 }
 

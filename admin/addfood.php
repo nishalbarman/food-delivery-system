@@ -74,7 +74,8 @@ if (isset($_POST['submit'])) {
                 <input type="text" id="title" name="title" placeholder="Title">
 
                 <label for="subtitle">Subtitle</label><br>
-                <textarea type="number" id="subtitle" name="subtitle" placeholder="Subtitle"></textarea>
+                <textarea type="number" id="subtitle" name="subtitle" placeholder="Maximum 104 chars"
+                    maxlength="104"></textarea>
 
                 <label>Choose Image</label>
                 <input class="file_up" type="file" name="myfile"> <br>
