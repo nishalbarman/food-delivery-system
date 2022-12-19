@@ -8,12 +8,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
+$sql = "SELECT * FROM foodcategory";
+$res = $conn->query($sql);
+$category = $res->fetch_all(MYSQLI_ASSOC);
+
 if (isset($_POST['submit'])) {
     $image = time() . '_' . $_FILES['myfile']['name'];
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
     $stocks = $_POST['stocks'];
     $amount = $_POST['amount'];
+    $cat = $_POST['category'];
 
     $destination = '../food-images/' . $image;
     $file = $_FILES['myfile']['tmp_name'];
@@ -24,7 +29,21 @@ if (isset($_POST['submit'])) {
         echo "You file extension must be .png, .jpg or .jpeg";
     } else {
         if (move_uploaded_file($file, $destination)) {
-            $sql = "INSERT INTO `fooditems` (`title`, `subtitle`, `stocks`, `amount`, `reviews`, `total-feedbacks`, `image`) VALUES ('$title', '$subtitle', '$stocks', '$amount', '0', '0', '$image');";
+            $sql = "INSERT INTO `fooditems` (`title`, `subtitle`, `stocks`, `amount`, `reviews`, `total-feedbacks`, `image`, `category`) VALUES ('$title', '$subtitle', '$stocks', '$amount', '0', '0', '$image', '$cat');";
+
+            $sql2 = "SELECT * FROM foodcategory WHERE catname = '$cat'";
+
+            $res = $conn->query($sql2);
+
+            while ($row = $res->fetch_assoc()) {
+                $items = $row['items'];
+            }
+
+            $items = $items + 1;
+
+            $sql2 = "UPDATE `foodcategory` SET `items`='$items'";
+            $res = $conn->query($sql2);
+
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Food Added.');</script>";
             }
@@ -59,6 +78,15 @@ if (isset($_POST['submit'])) {
 
                 <label>Choose Image</label>
                 <input class="file_up" type="file" name="myfile"> <br>
+
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <?php foreach ($category as $item): ?>
+                    <option value="<?php echo $item['catname']; ?>">
+                        <?php echo $item['catname']; ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
 
                 <label for="stocks">Stocks</label>
                 <input type="number" id="stocks" name="stocks" placeholder="Stocks">

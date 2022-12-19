@@ -45,10 +45,27 @@
     </div>
     <div id="main">
         <div id="dish-items">
-            <h1>Our food items</h1>
+            <h1 id="title-head">Food Menu</h1>
             <div id="menu-card" menu-cards></div>
         </div>
+
         <template data-menu-template>
+            <div>
+                <div class="cards" card-bg>
+
+                    <div class="cards-img-wrapper">
+                        <label id="card-title" class="cards-title-center" data-title></label>
+                        <label id="card-subtitle" data-subtitle hidden></label>
+
+                    </div>
+                    <div class="cards-body">
+                        <div class="view-btn-wrapper"><button class="view-btn" data-button></button></div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- <template data-menu-template>
             <div class="menu-item" template>
                 <div class="menu-img">
                     <img src="" class="menu-img-el" data-image />
@@ -65,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </template>
+        </template> -->
     </div>
     <script src="js/menu.js"></script>
     <script src="js/sidenav.js"></script>

@@ -5,6 +5,21 @@ if (!(loggedin !== "" && loggedin === "success")) {
 
 let userid = window.localStorage.getItem("userId");
 
+let cat = window.localStorage.getItem("cat");
+console.log(cat);
+let menuApi;
+if (cat === "") {
+  menuApi = "./api/get-menu.php";
+} else {
+  document.getElementById("title-head").innerHTML =
+    cat + " <span class='show-all' onclick='loadAll()'>( Show all )</span> ";
+
+  // <button class='' onclick='loadAll()'>Show all</button>
+
+  menuApi = "./api/get-menu.php?cat=" + cat;
+  window.localStorage.setItem("cat", "");
+}
+
 const menuTemplate = document.querySelector("[data-menu-template]");
 const menuCards = document.querySelector("[menu-cards]");
 const searchInput = document.querySelector("#searchInput");
@@ -29,20 +44,22 @@ searchInput.addEventListener("input", (e) => {
   });
 });
 
-fetch("http://localhost/food/api/get-menu.php")
+// New menu template style
+
+fetch(menuApi)
   .then((res) => res.json())
   .then((data) => {
     users = data.map((user) => {
       const menu = menuTemplate.content.cloneNode(true).children[0];
-      const img = menu.querySelector("[data-image]");
-      const title = menu.querySelector("[data-title]");
-      const subtitle = menu.querySelector("[data-subtitle]");
-      const button = menu.querySelector("[data-button]");
 
-      img.src = "http://localhost/food/food-images/" + user.image;
+      const title = menu.querySelector("[data-title]");
+      const cardbg = menu.querySelector("[card-bg]");
+      const button = menu.querySelector("[data-button]");
+      let image = "./food-images/" + user.image;
+
+      cardbg.style.backgroundImage = "url(" + image + ")";
       title.textContent = user.title;
-      subtitle.textContent = user.subtitle;
-      button.textContent = user.amount + " /-";
+      button.textContent = user.amount + " INR /-";
       button.setAttribute("onclick", "buyFood(" + user.id + ")");
       menuCards.appendChild(menu);
       return {
@@ -54,6 +71,12 @@ fetch("http://localhost/food/api/get-menu.php")
     });
   });
 
+function loadAll() {
+  window.localStorage.setItem("cat", "");
+  console.log(cat);
+  window.location = "./menu.html";
+}
+
 function buyFood(id) {
   if (!(loggedin !== "" && loggedin === "success")) {
     window.location = "login.html";
@@ -62,3 +85,29 @@ function buyFood(id) {
       "http:///localhost/food/payu/index.php?id=" + id + "&email=" + email;
   }
 }
+
+// Old menu style template
+// fetch("http://localhost/food/api/get-menu.php")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     users = data.map((user) => {
+//       const menu = menuTemplate.content.cloneNode(true).children[0];
+//       const img = menu.querySelector("[data-image]");
+//       const title = menu.querySelector("[data-title]");
+//       const subtitle = menu.querySelector("[data-subtitle]");
+//       const button = menu.querySelector("[data-button]");
+
+//       img.src = "http://localhost/food/food-images/" + user.image;
+//       title.textContent = user.title;
+//       subtitle.textContent = user.subtitle;
+//       button.textContent = user.amount + " /-";
+//       button.setAttribute("onclick", "buyFood(" + user.id + ")");
+//       menuCards.appendChild(menu);
+//       return {
+//         title: user.title,
+//         subtitle: user.subtitle,
+//         image: user.image,
+//         element: menu,
+//       };
+//     });
+//   });

@@ -19,8 +19,8 @@ if (isset($_POST['submit'])) {
 
     $extension = pathinfo($image, PATHINFO_EXTENSION);
 
-    if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
-        echo "You file extension must be .png, .jpg or .jpeg";
+    if (!in_array($extension, ['png', 'jpg', 'jpeg', 'webp'])) {
+        echo "You file extension must be .png, .jpg, .webp or .jpeg";
     } else {
         if (move_uploaded_file($file, $destination)) {
             $sql = "INSERT INTO `foodcategory` (`catname`, `items`, `image`) VALUES ('$title', '0', '$image');";

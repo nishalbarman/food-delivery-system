@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato - Food order online</title>
-    <link rel="stylesheet" href="./styles/index.css" />
-    <link rel="stylesheet" href="./styles/sidenav.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="../styles/sidenav.css" />
     <script>
         function logOut() {
             window.localStorage.setItem("authToken", '');
@@ -31,7 +31,7 @@
                 <a href="./index.html" class="logo">Tomato</a>
             </div>
             <div id="mySidenav" class="sidenav">
-                <img class="logoimg" src="assets/logo_tomato.png" />
+                <img class="logoimg" src="../assets/logo_tomato.png" />
                 <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
                 <a href="index.html">Home</a>
                 <a href="orders.html">My Orders</a>
@@ -40,7 +40,7 @@
             </div>
 
             <div id="mySidenav1" class="sidenav">
-                <img class="logoimg" src="assets/logo_tomato.png" />
+                <img class="logoimg" src="../assets/logo_tomato.png" />
                 <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
                 <a href="index.html">Home</a>
                 <a href="log.html">LogIn</a>
@@ -58,27 +58,6 @@
     </div>
 
     <div id="main">
-        <!-- Search Foods -->
-        <div id="searchContainer" class="searchWrapper">
-            <div class="cardHeaderText" style="margin-bottom: 10px;">
-                <h1>Search Results</h1>
-            </div>
-
-            <div id="searchView"></div>
-
-        </div>
-        <!-- Top Card Foods -->
-        <div id="cardss" class="cardWrapper">
-            <div class="cardHeaderText" style="margin-bottom: 10px;">
-                <h1>Top Category</h1>
-            </div>
-
-            <div id="category-card" class="category-card" category-cards></div>
-
-            <!-- <div id="cardView" class="cardContent"></div> -->
-
-        </div>
-        <div style="height: 5px;"></div>
 
         <!-- Menu Option -->
         <div id="menuWrapper" class="menu-wrapper">
@@ -87,16 +66,12 @@
             </div>
             <div id="menu-card" menu-cards></div>
 
-
-            <!-- The New Menu Template -->
-
             <template data-menu-template>
                 <div>
                     <div class="cards" card-bg>
 
                         <div class="cards-img-wrapper">
-                            <label id="card-title" class="cards-title-center" data-title></label>
-                            <label id="card-subtitle" data-subtitle hidden></label>
+                            <label id="card-title" class="cards-title-center" data-title>Burger</label>
 
                         </div>
                         <div class="cards-body">
@@ -106,8 +81,6 @@
                 </div>
             </template>
 
-
-            <!-- The Old Menu Template -->
 
             <!-- <template data-menu-template>
                 <div class="menu-item" template>
@@ -138,32 +111,9 @@
 
 
     </div>
-    <script src="./js/index.js"></script>
-    <script src="./js/sidenav.js"></script>
-    <script>
-        window.smoothScroll = function (target) {
-            var scrollContainer = target;
-            do { //find scroll container
-                scrollContainer = scrollContainer.parentNode;
-                if (!scrollContainer) return;
-                scrollContainer.scrollTop += 1;
-            } while (scrollContainer.scrollTop == 0);
+    <script src="./index.js"></script>
+    <script src="../js/sidenav.js"></script>
 
-            var targetY = 0;
-            do { //find the top of target relatively to the container
-                if (target == scrollContainer) break;
-                targetY += target.offsetTop;
-            } while (target = target.offsetParent);
-
-            scroll = function (c, a, b, i) {
-                i++; if (i > 30) return;
-                c.scrollTop = a + (b - a) / 30 * i;
-                setTimeout(function () { scroll(c, a, b, i); }, 20);
-            }
-            // start scrolling
-            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-        }
-    </script>
 
 </body>
 

@@ -1,6 +1,12 @@
 <?php include './../config/db.php';
 
-$sql = 'select * from fooditems';
+
+if (isset($_GET['cat'])) {
+    $cat = $_GET['cat'];
+    $sql = "select * from fooditems where category = '$cat'";
+} else {
+    $sql = 'select * from fooditems';
+}
 
 $res = mysqli_query($conn, $sql);
 $data = array();
