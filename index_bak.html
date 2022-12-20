@@ -6,23 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato - Food order online</title>
-    <link rel="stylesheet" href="styles/indeex.css" />
-    <link rel="stylesheet" href="styles/sidenav.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/slideshow.css" />
+    <link rel="stylesheet" href="./styles/sidenav.css" />
     <script>
         function logOut() {
             window.localStorage.setItem("authToken", '');
             window.localStorage.setItem("userId", '');
         }
     </script>
-
-
-
-
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- <div class="bg-image">
+    <div class="bg-image">
         <div id="navbar">
 
             <div class="header">
@@ -38,22 +40,23 @@
                 <a href="log.html" onclick="logOut()">LogOut</a>
             </div>
 
+            <div id="mySidenav1" class="sidenav">
+                <img class="logoimg" src="assets/logo_tomato.png" />
+                <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
+                <a href="index.html">Home</a>
+                <a href="log.html">LogIn</a>
+            </div>
+
         </div>
         <div class="searchBar">
-            <form id="search-form" class="search-form">
+            <form id="search-form" class="search-form" role="search" action="#">
                 <input class="sInput" type="search" placeholder="Search" aria-label="Search">
             </form>
             <button type="button" class="searchBtn"
-                onclick="smoothScroll(document.getElementById('searchContainer'))">Search</button>
-           
+                onclick="smoothScroll(document.getElementById('menu-card'))">Search</button>
+            <!--  -->
         </div>
-    </div> -->
-
-
-
-
-
-
+    </div>
 
     <div id="main">
         <!-- Search Foods -->
@@ -68,25 +71,66 @@
         <!-- Top Card Foods -->
         <div id="cardss" class="cardWrapper">
             <div class="cardHeaderText" style="margin-bottom: 10px;">
-                <h1>Top Choice</h1>
+                <h1>Top Category</h1>
             </div>
 
-            <div id="cardView" class="cardContent"></div>
+            <div id="category-card" class="category-card" category-cards></div>
+
+            <!-- <div id="cardView" class="cardContent"></div> -->
 
         </div>
-        <div style="height: 60px;"></div>
-
+        <div style="height: 5px;"></div>
 
         <!-- Menu Option -->
         <div id="menuWrapper" class="menu-wrapper">
             <div class="menu-header-text">
                 <h1>Explore the Menu</h1>
             </div>
-            <div class="mobile-center">
-                <div id="menuView"></div>
-            </div>
+            <div id="menu-card" menu-cards></div>
+
+
+            <!-- The New Menu Template -->
+
+            <template data-menu-template>
+                <div>
+                    <div class="cards" card-bg>
+
+                        <div class="cards-img-wrapper">
+                            <label id="card-title" class="cards-title-center" data-title></label>
+                            <label id="card-subtitle" data-subtitle hidden></label>
+
+                        </div>
+                        <div class="cards-body">
+                            <div class="view-btn-wrapper"><button class="view-btn" data-button></button></div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+
+            <!-- The Old Menu Template -->
+
+            <!-- <template data-menu-template>
+                <div class="menu-item" template>
+                    <div class="menu-img">
+                        <img src="" class="menu-img-el" data-image />
+                    </div>
+                    <div class="menu-body">
+                        <div class="menu-title-wrapper">
+                            <label data-title></label>
+                        </div>
+                        <div class="menu-sub-wrapper">
+                            <label data-subtitle></label>
+                        </div>
+                        <div class="menu-btn-wrapper">
+                            <button class="buy-btn" data-button></button>
+                        </div>
+                    </div>
+                </div>
+            </template> -->
+
             <div class="see-more">
-                <a href="menu.html">
+                <a href="./menu.html">
                     <h2 style="text-align:center;">See More</h2>
                 </a>
             </div>
@@ -95,8 +139,8 @@
 
 
     </div>
-    <script src="js/index.js"></script>
-    <script src="js/sidenav.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/sidenav.js"></script>
     <script>
         window.smoothScroll = function (target) {
             var scrollContainer = target;
@@ -121,7 +165,6 @@
             scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
         }
     </script>
-
 
 </body>
 

@@ -22,27 +22,27 @@ if (cat === "") {
 
 const menuTemplate = document.querySelector("[data-menu-template]");
 const menuCards = document.querySelector("[menu-cards]");
-const searchInput = document.querySelector("#searchInput");
+// const searchInput = document.querySelector("#searchInput");
 const search = document.querySelector(".searchInput");
 let users = [];
 
-searchInput.addEventListener("input", (e) => {
-  value = e.target.value.toLowerCase();
-  if (value === "") {
-    document.getElementsByClassName("menu-items");
-  }
-  console.log(value);
-  users.forEach((user) => {
-    let t = user.title.toLowerCase();
-    let s = user.subtitle.toLowerCase();
+// searchInput.addEventListener("input", (e) => {
+//   value = e.target.value.toLowerCase();
+//   if (value === "") {
+//     document.getElementsByClassName("menu-items");
+//   }
+//   console.log(value);
+//   users.forEach((user) => {
+//     let t = user.title.toLowerCase();
+//     let s = user.subtitle.toLowerCase();
 
-    const isVisible = t.includes(value) || s.includes(value);
+//     const isVisible = t.includes(value) || s.includes(value);
 
-    isVisible
-      ? user.element.classList.remove("hide")
-      : user.element.classList.add("hide");
-  });
-});
+//     isVisible
+//       ? user.element.classList.remove("hide")
+//       : user.element.classList.add("hide");
+//   });
+// });
 
 // New menu template style
 
@@ -53,14 +53,19 @@ fetch(menuApi)
       const menu = menuTemplate.content.cloneNode(true).children[0];
 
       const title = menu.querySelector("[data-title]");
+      const subtitle = menu.querySelector("[data-subtitle]");
       const cardbg = menu.querySelector("[card-bg]");
       const button = menu.querySelector("[data-button]");
+      const buttonFlip = menu.querySelector("[data-button-flip]");
       let image = "./food-images/" + user.image;
 
       cardbg.style.backgroundImage = "url(" + image + ")";
       title.textContent = user.title;
+      subtitle.textContent = user.subtitle;
       button.textContent = user.amount + " INR /-";
       button.setAttribute("onclick", "buyFood(" + user.id + ")");
+      buttonFlip.textContent = user.amount + " INR /-";
+      buttonFlip.setAttribute("onclick", "buyFood(" + user.id + ")");
       menuCards.appendChild(menu);
       return {
         title: user.title,

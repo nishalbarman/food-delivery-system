@@ -8,6 +8,8 @@
     <title>Our food items</title>
     <link rel="stylesheet" href="styles/menu.css" />
     <link rel="stylesheet" href="styles/sidenav.css" />
+    <link rel="stylesheet" href="styles/head.css" />
+    <link rel="stylesheet" href="./styles/cardflip.css" />
     <style>
         .hide {
             display: none;
@@ -17,7 +19,7 @@
 
 <body>
 
-    <div class="bg-image">
+    <!-- <div class="bg-image">
         <div id="navbar">
 
             <div class="header">
@@ -42,14 +44,64 @@
                 onclick="smoothScroll(document.getElementById('dish-items'))">Search</button>
 
         </div>
-    </div>
+    </div> -->
+
+    <header class="site-header">
+        <div class="site-identity">
+            <h1><a href="#">Food Clash</a></h1>
+        </div>
+        <nav class="site-navigation">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="myaccount.html">My account</a></li>
+                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div id="main">
         <div id="dish-items">
             <h1 id="title-head">Food Menu</h1>
+            <p></p>
             <div id="menu-card" menu-cards></div>
         </div>
 
         <template data-menu-template>
+            <div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+
+                            <div class="cards" card-bg>
+                                <div class="cards-img-wrapper">
+                                    <label id="card-title" class="cards-title-center" data-title></label>
+                                </div>
+                                <div class="cards-body">
+                                    <div class="view-btn-wrapper"><button class="view-btn" data-button></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="cards" style="background-color: #000000; background-image: none;" card-bg>
+
+                                <div class="cards-img-wrapper" style="padding: 10px;">
+                                    <label hidden></label>
+                                    <label id="card-subtitle" data-subtitle style="padding: 10px;"></label>
+
+                                </div>
+                                <div class="cards-body">
+                                    <div class="view-btn-wrapper"><button class="view-btn" data-button-flip></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+        </template>
+
+        <!-- <template data-menu-template>
             <div>
                 <div class="cards" card-bg>
 
@@ -63,7 +115,7 @@
                     </div>
                 </div>
             </div>
-        </template>
+        </template> -->
 
         <!-- <template data-menu-template>
             <div class="menu-item" template>
