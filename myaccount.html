@@ -55,8 +55,8 @@
             <ul class="nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Food Menu</a></li>
-                <li><a href="myorders.html">My Orders</a></li>
-                <li><a href="account.html">My account</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="myaccount.html">My account</a></li>
                 <li><a href="log.html" onclick="logOut()">LogOut</a></li>
             </ul>
         </nav>
@@ -80,34 +80,119 @@
                 </div>
                 <div class="other-details">
                     <div class="profile-title">
-                        <a href="" class="myaccount-a">Profile Settings</a>
+                        <a href="#" class="myaccount-a" onclick="toogleMe(this)" account-sidebar>Profile Settings</a>
                     </div>
                     <div class="profile-address">
-                        <a href="" class="myaccount-a">Change Address</a>
+                        <a href="#" class="myaccount-a" onclick="toogleMe(this)" account-sidebar>Give Feedback</a>
                     </div>
                 </div>
             </div>
 
-            <div class="info-container">
+            <div id="profile-setting" class="info-container">
                 <div class="info-container-title">
                     <label info-container-title-el>Profile Settings</label>
                 </div>
                 <div class="user-data-container">
                     <div class="name">
                         <div class="inputWrapper">
-                            <label class="fadeout">&#x2192; First Name &#x2190;</label>
+                            <label class="fadeout">&#x2192; First Name <span class="required">*</span> &#x2190;</label>
                             <input name="fname" id="fname" type="text" class="inputs" />
                         </div>
                         <div class="gap"></div>
                         <div class="inputWrapper">
-                            <label class="fadeout">&#x2192; Last Name &#x2190;</label>
+                            <label class="fadeout">&#x2192; Last Name <span class="required">*</span> &#x2190;</label>
                             <input name="sname" id="sname" type="text" class="inputs" />
                         </div>
                     </div>
                     <div class="name">
                         <div class="inputWrapper">
-                            <label class="phone">&#x2192; Phone Number &#x2190;</label>
+                            <label class="phone">&#x2192; Phone Number <span class="required">*</span> &#x2190;</label>
                             <input name="fname" id="fname" type="text" class="inputs" />
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Email Address <span class="required">*</span> &#x2190;</label>
+                            <input id="email1" name="email" type="emails" class="inputs" disabled email />
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Gender <span class="required">*</span> &#x2190;</label>
+                            <select name="gender" id="gender">
+                                <option>--- Select ---</option> <span class="required">*</span>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper" style="height: 100px;">
+                            <label class="phone">&#x2192; Address <span class="required">*</span> &#x2190;</label>
+                            <textarea name="address" id="address" type="address" class="inputs"
+                                placeholder="Address"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Pin Code <span class="required">*</span> &#x2190;</label>
+                            <input name="pincode" id="pincode" type="number" class="inputs" />
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper"
+                            style="width: 80%; padding: none; text-align: center; background-color: orange; outline: none; border: none; margin: auto;  margin-top: 20px; margin-bottom: 20px;">
+                            <button name="pincode" id="submit" class="submit-btn">Update</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback-form" class="info-container" style="display: none;">
+                <div class="info-container-title">
+                    <label info-container-title-el>Feedback</label>
+                </div>
+                <div class="user-data-container">
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Email Address <span class="required">*</span> &#x2190;</label>
+                            <input id="email2" name="email" type="emails" class="inputs" disabled email />
+                        </div>
+
+                    </div>
+                    <!-- <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Phone Number <span class="required">*</span> &#x2190;</label>
+                            <input name="fname" id="fname" type="text" class="inputs" />
+                        </div>
+
+                    </div> -->
+
+                    <div class="name">
+                        <div class="inputWrapper" style="height: 100px;">
+                            <label class="phone">&#x2192; Feedback <span class="required">*</span> &#x2190;</label>
+                            <textarea name="feed" id="feed" type="text" class="inputs"
+                                placeholder="Feedback"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <div class="inputWrapper"
+                            style="width: 80%; padding: none; text-align: center; background-color: orange; outline: none; border: none; margin: auto;  margin-top: 20px; margin-bottom: 20px;">
+                            <button name="pincode" id="submit" class="submit-btn">Submit Feedback</button>
                         </div>
 
                     </div>

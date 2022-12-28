@@ -1,6 +1,6 @@
 let loggedin = window.localStorage.getItem("authToken");
 if (!(loggedin !== "" && loggedin === "success")) {
-  window.location = "login.html";
+  alert("you are not logged, order can not be placed");
 }
 
 let userid = window.localStorage.getItem("userId");

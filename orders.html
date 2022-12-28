@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/orders.css" />
     <link rel="stylesheet" href="styles/sidenav.css" />
     <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/head.css" />
     <style>
         .hide {
             display: none;
@@ -18,7 +19,7 @@
 
 <body>
 
-    <div class="bg-image">
+    <!-- <div class="bg-image">
         <div id="navbar">
 
             <div class="header">
@@ -43,7 +44,25 @@
                 onclick="smoothScroll(document.getElementById('order-list'))">Search</button>
 
         </div>
-    </div>
+    </div> -->
+
+
+    <header class="site-header">
+        <div class="site-identity">
+            <h1><a href="#">Food Clash</a></h1>
+        </div>
+        <nav class="site-navigation">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Food Menu</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="myaccount.html">My account</a></li>
+                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
     <div id="main">
         <div id="dish-items">
             <h1>My Orders</h1>

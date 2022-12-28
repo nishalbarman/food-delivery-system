@@ -1,31 +1,35 @@
 let loggedin = window.localStorage.getItem("authToken");
 if (!(loggedin !== "" && loggedin === "success")) {
-  window.location = "login.html";
+  alert(
+    "You are not logged in, kindly log in or sign up to view order section."
+  );
+  window.location = "./log.html";
 }
+
 let userid = window.localStorage.getItem("userId");
 console.log(userid);
 
 const orderTemplate = document.querySelector("[data-order-template]");
 const orderCards = document.querySelector("[order-cards]");
-const searchInput = document.querySelector("#searchInput");
+// const searchInput = document.querySelector("#searchInput");
 // const searchView = document.getElementById("searchView");
-const search = document.querySelector(".searchInput");
-let users = [];
+// const search = document.querySelector(".searchInput");
+// let users = [];
 
-searchInput.addEventListener("input", (e) => {
-  value = e.target.value.toLowerCase();
-  console.log(value);
-  users.forEach((user) => {
-    let t = user.title.toLowerCase();
-    let s = user.subtitle.toLowerCase();
-    let p = user.amount.toLowerCase();
-    const isVisible = t.includes(value) || s.toLowerCase().includes(value);
+// searchInput.addEventListener("input", (e) => {
+//   value = e.target.value.toLowerCase();
+//   console.log(value);
+//   users.forEach((user) => {
+//     let t = user.title.toLowerCase();
+//     let s = user.subtitle.toLowerCase();
+//     let p = user.amount.toLowerCase();
+//     const isVisible = t.includes(value) || s.toLowerCase().includes(value);
 
-    isVisible
-      ? user.element.classList.remove("hide")
-      : user.element.classList.add("hide");
-  });
-});
+//     isVisible
+//       ? user.element.classList.remove("hide")
+//       : user.element.classList.add("hide");
+//   });
+// });
 
 let options = {
   method: "POST",

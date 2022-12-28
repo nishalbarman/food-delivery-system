@@ -55,9 +55,12 @@ regBtn.addEventListener("click", () => {
       console.log(this.responseText);
       let jsonObj = JSON.parse(this.responseText);
       if (jsonObj.success === true) {
-        alert("Otp has been sent.");
+        // alert("Otp has been sent.");
+        document.getElementById("otp-status").innerHTML = "OTP sent on email";
       } else {
-        alert("Otp failed.");
+        // alert("Otp failed.");
+        document.getElementById("otp-status").innerHTML =
+          "OTP sent failed, try again";
       }
     } else {
       console.log("Error");
@@ -121,10 +124,13 @@ function logMe() {
         alert(jsonObj["message"]);
         window.localStorage.setItem("authToken", "success");
         window.localStorage.setItem("userId", jsonObj["email"]);
-        window.location = "index.html";
+        window.location = "./index.html";
+      } else {
+        alert("Invalid Username Or Password");
       }
     } else {
       console.log("Error");
+      alert("Some error occured, try again later.");
     }
   };
 
