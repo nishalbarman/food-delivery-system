@@ -25,7 +25,7 @@ let users = [];
 //   });
 // });
 
-// getCards();
+getCards();
 getMenu();
 
 // New menu template style
@@ -64,34 +64,34 @@ function getMenu() {
 }
 
 // New card template style
-// function getCards() {
-//   const menuTemplate = document.querySelector("[data-menu-template]");
-//   const menuCards = document.querySelector("[category-cards]");
-//   fetch("./api/get-category.php")
-//     .then((res) => res.json())
-//     .then((data) => {
-//       users = data.map((user) => {
-//         const menu = menuTemplate.content.cloneNode(true).children[0];
+function getCards() {
+  const menuTemplate = document.querySelector("[data-menu-template]");
+  const menuCards = document.querySelector("[category-cards]");
+  fetch("./api/get-category.php")
+    .then((res) => res.json())
+    .then((data) => {
+      users = data.map((user) => {
+        const menu = menuTemplate.content.cloneNode(true).children[0];
 
-//         const title = menu.querySelector("[data-title]");
-//         const cardbg = menu.querySelector("[card-bg]");
-//         const button = menu.querySelector("[data-button]");
-//         let image = "./category-image/" + user.image;
+        const title = menu.querySelector("[data-title]");
+        const cardbg = menu.querySelector("[card-bg]");
+        const button = menu.querySelector("[data-button]");
+        let image = "./category-image/" + user.image;
 
-//         cardbg.style.backgroundImage = "url(" + image + ")";
-//         title.textContent = user.catname;
-//         button.textContent = "VIEW";
-//         button.setAttribute("onclick", "showCategory('" + user.catname + "')");
-//         menuCards.appendChild(menu);
-//         return {
-//           title: user.title,
-//           subtitle: user.subtitle,
-//           image: user.image,
-//           element: menu,
-//         };
-//       });
-//     });
-// }
+        cardbg.style.backgroundImage = "url(" + image + ")";
+        title.textContent = user.catname;
+        button.textContent = "VIEW";
+        button.setAttribute("onclick", "showCategory('" + user.catname + "')");
+        menuCards.appendChild(menu);
+        return {
+          title: user.title,
+          subtitle: user.subtitle,
+          image: user.image,
+          element: menu,
+        };
+      });
+    });
+}
 
 function buyFood(id) {
   let loggedin = window.localStorage.getItem("authToken");

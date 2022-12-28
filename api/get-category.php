@@ -1,5 +1,5 @@
 <?php
-include './../config/db.php';
+include './../api/config/db.php';
 
 $sql = 'select * from foodcategory ';
 
@@ -10,5 +10,6 @@ while ($row = mysqli_fetch_assoc($res)) {
 }
 
 print(json_encode($data));
+
 
 ?>

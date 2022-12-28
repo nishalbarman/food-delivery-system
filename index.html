@@ -30,7 +30,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Food Menu</a></li>
                 <li><a href="orders.html">My Orders</a></li>
-                <li><a href="myaccount.html">My account</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
                 <li><a href="log.html" onclick="logOut()">LogOut</a></li>
             </ul>
         </nav>
@@ -63,6 +63,19 @@
         </div>
 
         <div style="height: 10px;"></div>
+
+        <!-- Top Card Foods -->
+        <div id="cardss" class="cardWrapper">
+            <div class="cardHeaderText" style="margin-bottom: 10px;">
+                <h1>Categories</h1>
+            </div>
+
+            <div id="category-card" class="category-card" category-cards></div>
+
+            <!-- <div id="cardView" class="cardContent"></div> -->
+
+        </div>
+        <div style="height: 5px;"></div>
 
         <!-- Food Menu -->
         <div id="menuWrapper" class="menu-wrapper">
@@ -105,6 +118,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
             </template>
 
 
