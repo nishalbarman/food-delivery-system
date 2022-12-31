@@ -1,5 +1,5 @@
 <?php
-include './../api/config/db.php';
+include './../config/db.php';
 
 $sql = 'select * from foodcategory ';
 

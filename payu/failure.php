@@ -56,10 +56,10 @@ $hash = hash("sha512", $retHashSeq);
         </div>
     </div>
     <script>
-        function redirect() {
-            console.log("Clicked Btn");
-            window.location = 'http://localhost/food/orders.html';
-        }
+    function redirect() {
+        console.log("Clicked Btn");
+        window.location = 'http://localhost/food/orders.html';
+    }
     </script>
 </body>
 

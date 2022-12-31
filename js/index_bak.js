@@ -1,29 +1,30 @@
+const cardView = document.getElementById("cardView");
 const menuView = document.getElementById("menuView");
-// const searchView = document.getElementById("searchView");
-// const search = document.querySelector(".sInput");
-// const sBtn = document.querySelector(".searchBtn");
+const searchView = document.getElementById("searchView");
+const search = document.querySelector(".sInput");
+const sBtn = document.querySelector(".searchBtn");
 let userid = window.localStorage.getItem("userId");
 let prevValue;
 let value;
 let users = [];
 
-// document.getElementById("searchContainer").style.display = "none";
+document.getElementById("searchContainer").style.display = "none";
 
-// search.addEventListener("input", (e) => {
-//   value = e.target.value.toLowerCase();
-//   console.log(value);
+search.addEventListener("input", (e) => {
+  value = e.target.value.toLowerCase();
+  console.log(value);
 
-//   users.forEach((user) => {
-//     let t = user.title.toLowerCase();
-//     let s = user.subtitle.toLowerCase();
+  users.forEach((user) => {
+    let t = user.title.toLowerCase();
+    let s = user.subtitle.toLowerCase();
 
-//     const isVisible = t.includes(value) || s.includes(value);
+    const isVisible = t.includes(value) || s.includes(value);
 
-//     isVisible
-//       ? user.element.classList.remove("hide")
-//       : user.element.classList.add("hide");
-//   });
-// });
+    isVisible
+      ? user.element.classList.remove("hide")
+      : user.element.classList.add("hide");
+  });
+});
 
 getCards();
 getMenu();
@@ -39,19 +40,14 @@ function getMenu() {
         const menu = menuTemplate.content.cloneNode(true).children[0];
 
         const title = menu.querySelector("[data-title]");
-        const subtitle = menu.querySelector("[data-subtitle]");
         const cardbg = menu.querySelector("[card-bg]");
         const button = menu.querySelector("[data-button]");
-        const buttonFlip = menu.querySelector("[data-button-flip]");
         let image = "./food-images/" + user.image;
 
         cardbg.style.backgroundImage = "url(" + image + ")";
         title.textContent = user.title;
-        subtitle.textContent = user.subtitle;
         button.textContent = user.amount + " INR /-";
         button.setAttribute("onclick", "buyFood(" + user.id + ")");
-        buttonFlip.textContent = user.amount + " INR /-";
-        buttonFlip.setAttribute("onclick", "buyFood(" + user.id + ")");
         menuCards.appendChild(menu);
         return {
           title: user.title,

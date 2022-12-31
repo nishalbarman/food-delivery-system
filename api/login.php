@@ -1,5 +1,5 @@
 <?php
-include './../config/db.php';
+include '../config/db.php';
 
 $email = $_POST['uname'];
 $password = $_POST['upass'];
