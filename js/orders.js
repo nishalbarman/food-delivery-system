@@ -1,11 +1,3 @@
-let loggedin = window.localStorage.getItem("authToken");
-if (!(loggedin !== "" && loggedin === "success")) {
-  alert(
-    "You are not logged in, kindly log in or sign up to view order section."
-  );
-  window.location = "./log.html";
-}
-
 let userid = window.localStorage.getItem("userId");
 console.log(userid);
 

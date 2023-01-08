@@ -10,6 +10,29 @@
     <link rel="stylesheet" href="styles/sidenav.css" />
     <link rel="stylesheet" href="styles/head.css" />
     <link rel="stylesheet" href="./styles/cardflip.css" />
+    <script>
+        function logOut() {
+            window.localStorage.setItem("authToken", '');
+            window.localStorage.setItem("userId", '');
+        }
+
+        function setButton() {
+            let loggedin = window.localStorage.getItem("authToken");
+            if (!(loggedin !== "" && loggedin === "success")) {
+                document.getElementById('loginBtnHead').textContent = "LogIn";
+                document.getElementById('loginBtnHead').href = "./log.html";
+                document.getElementById('loginBtnHead').setAttribute('onclick', '');
+                // document.querySelectorAll('[hide-me]').forEach(element => {
+                //     element.style.display = "none";
+                // });
+            } else {
+                document.querySelectorAll('[hide-me]').forEach(element => {
+                    element.style.display = "block";
+                });
+            }
+
+        }
+    </script>
     <style>
         .hide {
             display: none;
@@ -17,7 +40,22 @@
     </style>
 </head>
 
-<body>
+<body onload="setButton()">
+
+    <header class="site-header">
+        <div class="site-identity">
+            <h1><a href="#">Food Clash</a></h1>
+        </div>
+        <nav class="site-navigation">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Food Menu</a></li>
+                <li><a hide-me href="orders.html" style="display: none;">My Orders</a></li>
+                <li><a hide-me href="myaccount.html" style="display: none;">My Account</a></li>
+                <li><a id="loginBtnHead" href="log.html" onclick="logOut()">LogOut</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- <div class="bg-image">
         <div id="navbar">
@@ -45,20 +83,6 @@
 
         </div>
     </div> -->
-
-    <header class="site-header">
-        <div class="site-identity">
-            <h1><a href="#">Food Clash</a></h1>
-        </div>
-        <nav class="site-navigation">
-            <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="orders.html">My Orders</a></li>
-                <li><a href="myaccount.html">My account</a></li>
-                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <div id="main">
         <div id="dish-items">

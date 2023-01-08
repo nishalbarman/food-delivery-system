@@ -7,61 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato - My Orders</title>
     <link rel="stylesheet" href="styles/orders.css" />
-    <link rel="stylesheet" href="styles/sidenav.css" />
+    <!-- <link rel="stylesheet" href="styles/sidenav.css" /> -->
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/head.css" />
-    <style>
+    <script>
+        let loggedin = window.localStorage.getItem("authToken");
+        if (!(loggedin !== "" && loggedin === "success")) {
+            alert(
+                "You are not logged in, kindly log in or sign up to view order section."
+            );
+            window.location = "./index.html";
+            return;
+        }
+
+
+        function logOut() {
+            window.localStorage.setItem("authToken", '');
+            window.localStorage.setItem("userId", '');
+        }
+
+        function setButton() {
+            let loggedin = window.localStorage.getItem("authToken");
+            if (!(loggedin !== "" && loggedin === "success")) {
+                document.getElementById('loginBtnHead').textContent = "LogIn";
+                document.getElementById('loginBtnHead').href = "./log.html";
+                document.getElementById('loginBtnHead').setAttribute('onclick', '');
+                // document.querySelectorAll('[hide-me]').forEach(element => {
+                //     element.style.display = "none";
+                // });
+            } else {
+                document.querySelectorAll('[hide-me]').forEach(element => {
+                    element.style.display = "block";
+                });
+            }
+
+        }
+
+    </script>
+    <!-- <style>
         .hide {
             display: none;
         }
-    </style>
+    </style> -->
 </head>
 
-<body>
-
-    <!-- <div class="bg-image">
-        <div id="navbar">
-
-            <div class="header">
-                <span class="menu" onclick="openNav()">&#9776;</span>
-                <a href="#" class="logo">Tomato</a>
-            </div>
-            <div id="mySidenav" class="sidenav">
-                <img class="logoimg" src="assets/logo_tomato.png" />
-                <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
-                <a href="index.html">Home</a>
-                <a href="orders.html">My Orders</a>
-                <a href="setting.html">Settings</a>
-                <a href="log.html" onclick="logOut()">LogOut</a>
-            </div>
-
-        </div>
-        <div class="searchBar">
-            <form id="search-form" class="search-form" role="search">
-                <input id="searchInput" class="sInput" type="search" placeholder="Search" aria-label="Search">
-            </form>
-            <button type="button" class="searchBtn"
-                onclick="smoothScroll(document.getElementById('order-list'))">Search</button>
-
-        </div>
-    </div> -->
-
+<body onload="setButton()">
 
     <header class="site-header">
         <div class="site-identity">
             <h1><a href="#">Food Clash</a></h1>
         </div>
+        <input id="searchInput" class="sInput" type="search" placeholder="Search" aria-label="Search">
         <nav class="site-navigation">
             <ul class="nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Food Menu</a></li>
-                <li><a href="orders.html">My Orders</a></li>
-                <li><a href="myaccount.html">My account</a></li>
-                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
+                <li><a href="orders.html" style="display: none;" hide-me>My Orders</a></li>
+                <li><a href="myaccount.html" style="display: none;" hide-me>My Account</a></li>
+                <li><a id="loginBtnHead" href="log.html" onclick="logOut()">LogOut</a></li>
             </ul>
         </nav>
     </header>
-
 
     <div id="main">
         <div id="dish-items">
@@ -135,31 +141,6 @@
     </div>
     <script src="js/orders.js"></script>
     <script src="js/sidenav.js"></script>
-    <script>
-
-        window.smoothScroll = function (target) {
-            var scrollContainer = target;
-            do { //find scroll container
-                scrollContainer = scrollContainer.parentNode;
-                if (!scrollContainer) return;
-                scrollContainer.scrollTop += 1;
-            } while (scrollContainer.scrollTop == 0);
-
-            var targetY = 0;
-            do { //find the top of target relatively to the container
-                if (target == scrollContainer) break;
-                targetY += target.offsetTop;
-            } while (target = target.offsetParent);
-
-            scroll = function (c, a, b, i) {
-                i++; if (i > 30) return;
-                c.scrollTop = a + (b - a) / 30 * i;
-                setTimeout(function () { scroll(c, a, b, i); }, 20);
-            }
-            // start scrolling
-            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-        }
-    </script>
 </body>
 
 </html>

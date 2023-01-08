@@ -8,18 +8,37 @@
     <title>Tomato - Food order online</title>
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/slideshow.css" />
-    <link rel="stylesheet" href="./styles/sidenav.css" />
+    <!-- <link rel="stylesheet" href="./styles/sidenav.css" /> -->
     <link rel="stylesheet" href="./styles/head.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/cardflip.css" />
     <script>
         function logOut() {
             window.localStorage.setItem("authToken", '');
             window.localStorage.setItem("userId", '');
         }
+
+        function setButton() {
+            let loggedin = window.localStorage.getItem("authToken");
+            if (!(loggedin !== "" && loggedin === "success")) {
+                document.getElementById('loginBtnHead').textContent = "LogIn";
+                document.getElementById('loginBtnHead').href = "./log.html";
+                document.getElementById('loginBtnHead').setAttribute('onclick', '');
+                // document.querySelectorAll('[hide-me]').forEach(element => {
+                //     element.style.display = "none";
+                // });
+            } else {
+                document.querySelectorAll('[hide-me]').forEach(element => {
+                    element.style.display = "block";
+                });
+            }
+
+        }
+
     </script>
 </head>
 
-<body>
+<body onload="setButton()">
 
     <header class="site-header">
         <div class="site-identity">
@@ -29,27 +48,25 @@
             <ul class="nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Food Menu</a></li>
-                <li><a href="orders.html">My Orders</a></li>
-                <li><a href="myaccount.html">My Account</a></li>
-                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
+                <li><a hide-me href="orders.html" style="display: none;">My Orders</a></li>
+                <li><a hide-me href="myaccount.html" style="display: none;">My Account</a></li>
+                <li><a id="loginBtnHead" href="log.html" onclick="logOut()">LogOut</a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="main">
-        <div class="slideshow-container">
 
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <img src="./banner/banner1.webp" style="width:100%; ">
-                <div class="text">Caption Text</div>
-            </div>
 
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="./banner/banner2.webp" style="width:100%; ">
-                <div class="text">Caption Two</div>
-            </div>
+    <div id="main" style="margin-top: 20px;">
+        <div class="slideshow-container" slide-show>
+
+            <template data-banner>
+                <div class="mySlides fade">
+                    <div class="numbertext" num-data></div>
+                    <img src="" style="width:100%;" img-data>
+                    <div class="text" caption-data></div>
+                </div>
+            </template>
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
@@ -57,10 +74,13 @@
         </div>
         <br>
 
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
+        <div style="text-align:center" dots-data></div>
+
+        <template banner-dot>
+            <span class="dot"></span>
+        </template>
+
+        <!-- <span class="dot" onclick="currentSlide(2)"></span> -->
 
         <div style="height: 10px;"></div>
 
@@ -122,6 +142,21 @@
             </template>
 
 
+            <template data-category-template>
+                <div>
+                    <div class="cards" card-bg>
+                        <div class="cards-img-wrapper">
+                            <label id="card-title" class="cards-title-center" data-title></label>
+                        </div>
+                        <!-- <div class="cards-body">
+                            <div class="view-btn-wrapper"><button class="view-btn" data-button></button>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </template>
+
+
             <!-- The Old Menu Template -->
 
             <!-- <template data-menu-template>
@@ -156,28 +191,6 @@
     <script src="./js/index.js"></script>
     <script src="./js/sidenav.js"></script>
     <script>
-        window.smoothScroll = function (target) {
-            var scrollContainer = target;
-            do { //find scroll container
-                scrollContainer = scrollContainer.parentNode;
-                if (!scrollContainer) return;
-                scrollContainer.scrollTop += 1;
-            } while (scrollContainer.scrollTop == 0);
-
-            var targetY = 0;
-            do { //find the top of target relatively to the container
-                if (target == scrollContainer) break;
-                targetY += target.offsetTop;
-            } while (target = target.offsetParent);
-
-            scroll = function (c, a, b, i) {
-                i++; if (i > 30) return;
-                c.scrollTop = a + (b - a) / 30 * i;
-                setTimeout(function () { scroll(c, a, b, i); }, 20);
-            }
-            // start scrolling
-            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-        }
 
         // Slide 
         let slideIndex = 1;

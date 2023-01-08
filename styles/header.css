@@ -10,6 +10,12 @@ html {
   margin: 0;
 }
 
+#main {
+  transition: margin-left 0.5s;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 h3 {
   text-decoration: 2px double underline;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;

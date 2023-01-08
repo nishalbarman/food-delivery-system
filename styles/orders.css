@@ -3,8 +3,8 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-body {
-  background-color: #f0f0f0;
+#main {
+  background-color: white;
 }
 
 #order-list {
@@ -27,7 +27,7 @@ body {
   display: flex;
   justify-content: left;
   padding: 13px;
-  width: 100%;
+  /* width: 100%; */
   background-color: #e0e0e0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

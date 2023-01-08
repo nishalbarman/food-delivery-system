@@ -24,7 +24,7 @@ let users = [];
 //       : user.element.classList.add("hide");
 //   });
 // });
-
+getBanner();
 getCards();
 getMenu();
 
@@ -65,7 +65,7 @@ function getMenu() {
 
 // New card template style
 function getCards() {
-  const menuTemplate = document.querySelector("[data-menu-template]");
+  const menuTemplate = document.querySelector("[data-category-template]");
   const menuCards = document.querySelector("[category-cards]");
   fetch("./api/get-category.php")
     .then((res) => res.json())
@@ -75,13 +75,13 @@ function getCards() {
 
         const title = menu.querySelector("[data-title]");
         const cardbg = menu.querySelector("[card-bg]");
-        const button = menu.querySelector("[data-button]");
+        // const button = menu.querySelector("[data-button]");
         let image = "./category-image/" + user.image;
 
         cardbg.style.backgroundImage = "url(" + image + ")";
         title.textContent = user.catname;
-        button.textContent = "VIEW";
-        button.setAttribute("onclick", "showCategory('" + user.catname + "')");
+        // button.textContent = "VIEW";
+        cardbg.setAttribute("onclick", "showCategory('" + user.catname + "')");
         menuCards.appendChild(menu);
         return {
           title: user.title,
@@ -91,6 +91,68 @@ function getCards() {
         };
       });
     });
+}
+
+// New card template style
+function getBanner() {
+  const sideShowTemplate = document.querySelector("[data-banner]");
+  const slideShowView = document.querySelector("[slide-show]");
+
+  const dotTemplate = document.querySelector("[banner-dot]");
+  const dotsView = document.querySelector("[dots-data]");
+
+  const xhttp = new XMLHttpRequest();
+
+  xhttp.onload = function () {
+    let jsonData = JSON.parse(xhttp.responseText);
+    console.log(jsonData);
+    let count = 1;
+    let length = jsonData.length;
+    jsonData.forEach((user) => {
+      const banner = sideShowTemplate.content.cloneNode(true).children[0];
+      const dots = dotTemplate.content.cloneNode(true).children[0];
+
+      dots.setAttribute("onlcick", "currentSlide('" + count + "')");
+      count++;
+
+      const numText = banner.querySelector("[num-data]");
+      const caption = banner.querySelector("[caption-data]");
+      const cardbg = banner.querySelector("[img-data]");
+      // const button = menu.querySelector("[data-button]");
+
+      cardbg.src = "./banner-image/" + user.image;
+      caption.innerHTML = "<h2>" + user.bannert + "</h2>";
+      numText.innerHTML = "<span>" + user.id + " / " + length + "</span>";
+      cardbg.setAttribute("onclick", "document.location='" + user.url + "'");
+      slideShowView.appendChild(banner);
+      dotsView.appendChild(dots);
+    });
+  };
+
+  xhttp.open("GET", "./api/get-banner.php", false);
+  xhttp.send();
+
+  // fetch("./api/get-banner.php")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     let count = 1;
+  //     data.forEach((user) => {
+  //       const banner = sideShowTemplate.content.cloneNode(true).children[0];
+  //       const dots = dotTemplate.content.cloneNode(true).children[0];
+
+  //       dots.setAttribute("onlcick", "currentSlide('" + count + "')");
+  //       count++;
+
+  //       const caption = banner.querySelector("[caption-data]");
+  //       const cardbg = banner.querySelector("[img-data]");
+  //       // const button = menu.querySelector("[data-button]");
+
+  //       cardbg.src = "./banner-image/" + user.image;
+  //       caption.textContent = user.bannerit;
+  //       cardbg.setAttribute("onclick", "showCategory('" + user.id + "')");
+  //       slideShowView.appendChild(banner);
+  //     });
+  //   });
 }
 
 function buyFood(id) {

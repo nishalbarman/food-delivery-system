@@ -7,9 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato - My Orders</title>
     <link rel="stylesheet" href="styles/myaccount.css" />
-    <link rel="stylesheet" href="styles/sidenav.css" />
+    <!-- <link rel="stylesheet" href="styles/sidenav.css" /> -->
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/head.css" />
+
+    <script>
+        let loggedin = window.localStorage.getItem("authToken");
+        if (!(loggedin !== "" && loggedin === "success")) {
+            alert(
+                "You are not logged in, kindly log in or sign up to view account section."
+            );
+            window.location = "./index.html";
+        }
+
+        function logOut() {
+            window.localStorage.setItem("authToken", '');
+            window.localStorage.setItem("userId", '');
+        }
+
+        function setButton() {
+            let loggedin = window.localStorage.getItem("authToken");
+            if (!(loggedin !== "" && loggedin === "success")) {
+                document.getElementById('loginBtnHead').textContent = "LogIn";
+                document.getElementById('loginBtnHead').href = "./log.html";
+                document.getElementById('loginBtnHead').setAttribute('onclick', '');
+                // document.querySelectorAll('[hide-me]').forEach(element => {
+                //     element.style.display = "none";
+                // });
+            } else {
+                document.querySelectorAll('[hide-me]').forEach(element => {
+                    element.style.display = "block";
+                });
+            }
+
+        }
+
+    </script>
     <!-- <style>
         .hide {
             display: none;
@@ -17,8 +50,22 @@
     </style> -->
 </head>
 
-<body>
+<body onload="setButton()">
 
+    <header class="site-header">
+        <div class="site-identity">
+            <h1><a href="#">Food Clash</a></h1>
+        </div>
+        <nav class="site-navigation">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Food Menu</a></li>
+                <li><a hide-me href="orders.html" style="display: none;">My Orders</a></li>
+                <li><a hide-me href="myaccount.html" style="display: none;">My Account</a></li>
+                <li><a id="loginBtnHead" href="log.html" onclick="logOut()">LogOut</a></li>
+            </ul>
+        </nav>
+    </header>
     <!-- <div class="bg-image">
         <div id="navbar">
 
@@ -47,22 +94,7 @@
     </div> -->
 
 
-    <header class="site-header">
-        <div class="site-identity">
-            <h1><a href="#">Food Clash</a></h1>
-        </div>
-        <nav class="site-navigation">
-            <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Food Menu</a></li>
-                <li><a href="orders.html">My Orders</a></li>
-                <li><a href="myaccount.html">My account</a></li>
-                <li><a href="log.html" onclick="logOut()">LogOut</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div id="main">
+    <div id="main" style="margin-top: 20px;">
         <div class="container">
             <div class="side-bar">
                 <div class="user-info">
@@ -183,8 +215,8 @@
                     <div class="name">
                         <div class="inputWrapper" style="height: 100px;">
                             <label class="phone">&#x2192; Feedback <span class="required">*</span> &#x2190;</label>
-                            <textarea name="feed" id="feed" type="text" class="inputs"
-                                placeholder="Feedback"></textarea>
+                            <textarea name="feed" id="feed" type="text" class="inputs" placeholder="Feedback" value=""
+                                feedback></textarea>
                         </div>
 
                     </div>
@@ -192,7 +224,7 @@
                     <div class="name">
                         <div class="inputWrapper"
                             style="width: 80%; padding: none; text-align: center; background-color: orange; outline: none; border: none; margin: auto;  margin-top: 20px; margin-bottom: 20px;">
-                            <button name="pincode" id="submit" class="submit-btn">Submit Feedback</button>
+                            <button name="pincode" id="submit-feed" class="submit-btn">Submit Feedback</button>
                         </div>
 
                     </div>
@@ -205,29 +237,36 @@
     <script src="js/myaccount.js"></script>
     <script src="js/sidenav.js"></script>
     <script>
+        const submitFeed = document.querySelector("#submit-feed");
+        submitFeed.addEventListener('click', () => {
+            if (document.querySelector("[feedback]").value === '') {
+                alert("Feedback is empty.");
+            } else {
+                let formdata = new FormData();
 
-        window.smoothScroll = function (target) {
-            var scrollContainer = target;
-            do { //find scroll container
-                scrollContainer = scrollContainer.parentNode;
-                if (!scrollContainer) return;
-                scrollContainer.scrollTop += 1;
-            } while (scrollContainer.scrollTop == 0);
+                formdata.append("email", window.localStorage.getItem("userId"));
+                formdata.append("title", "FoodDelivery");
+                formdata.append("feedback", document.getElementById('feed'));
 
-            var targetY = 0;
-            do { //find the top of target relatively to the container
-                if (target == scrollContainer) break;
-                targetY += target.offsetTop;
-            } while (target = target.offsetParent);
+                let postData = {
+                    body: formdata,
+                    header: {
+                        // "Content-Type": "multipart/form-data",
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    method: "post"
+                }
 
-            scroll = function (c, a, b, i) {
-                i++; if (i > 30) return;
-                c.scrollTop = a + (b - a) / 30 * i;
-                setTimeout(function () { scroll(c, a, b, i); }, 20);
+                fetch("./api/post-feedback.php", postData).then(res => res.json()).then(data => {
+                    // if (data.success === true) {
+                    if (data.success === true) {
+                        document.getElementById('feed').value = "";
+                    }
+                    alert(data.message);
+                    // }
+                })
             }
-            // start scrolling
-            scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-        }
+        })
     </script>
 </body>
 

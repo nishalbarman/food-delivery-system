@@ -199,6 +199,7 @@ textarea {
   background-color: orange;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 @keyframes fadeOut {
