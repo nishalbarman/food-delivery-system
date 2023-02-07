@@ -111,29 +111,47 @@ function regMe() {
 }
 
 function logMe() {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "./api/login.php", true);
-  xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
+  let string1 = removeSpaces(document.getElementById("mainCaptcha").value);
+  let string2 = removeSpaces(document.getElementById("captcha").value);
 
-  xhr.onload = function () {
-    if (this.status === 200) {
-      console.log(this.responseText);
-      let jsonObj = JSON.parse(this.responseText);
-      if (jsonObj["success"] === true) {
-        alert(jsonObj["message"]);
-        // window.localStorage.setItem("authToken", "success");
-        // window.localStorage.setItem("userId", jsonObj["email"]);
-        window.location = "./index.php";
-        // window.location = "http://localhost/food/login.php";
+  console.log(string1 + " = " + string2);
+
+  if (string1 == string2) {
+    // document.getElementById("success").innerHTML =
+    //   "Form is validated Successfully";
+    // alert("Form is validated Successfully");
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./api/login.php", true);
+    xhr.getResponseHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      if (this.status === 200) {
+        console.log(this.responseText);
+        let jsonObj = JSON.parse(this.responseText);
+        if (jsonObj["success"] === true) {
+          alert(jsonObj["message"]);
+          // window.localStorage.setItem("authToken", "success");
+          // window.localStorage.setItem("userId", jsonObj["email"]);
+          window.location = "./index.php";
+          // window.location = "http://localhost/food/login.php";
+        } else {
+          alert("Invalid Username Or Password");
+        }
       } else {
-        alert("Invalid Username Or Password");
+        console.log("Error");
+        alert("Some error occured, try again later.");
       }
-    } else {
-      console.log("Error");
-      alert("Some error occured, try again later.");
-    }
-  };
+    };
 
-  let formData = new FormData(document.getElementById("loginForm"));
-  xhr.send(formData);
+    let formData = new FormData(document.getElementById("loginForm"));
+    xhr.send(formData);
+
+    return true;
+  } else {
+    // document.getElementById("error").innerHTML =
+    //   "Please enter a valid captcha.";
+    alert("Please enter a valid captcha.");
+    return false;
+  }
 }

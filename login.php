@@ -24,9 +24,41 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
     <link rel="stylesheet" href="styles/log.css">
 
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="text/javascript">
+        function generateCaptcha() {
+            let alpha = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+            let i;
+
+            let a, b, c, d;
+            for (i = 0; i < 4; i++) {
+                a = alpha[Math.floor(Math.random() * alpha.length)];
+                b = alpha[Math.floor(Math.random() * alpha.length)];
+                c = alpha[Math.floor(Math.random() * alpha.length)];
+                d = alpha[Math.floor(Math.random() * alpha.length)];
+            }
+            let code = a + ' ' + b + ' ' + ' ' + c + ' ' + d;
+            document.getElementById("mainCaptcha").value = code;
+
+            let background = new Array('captcha1', 'captcha2', 'captcha3');
+            let back = background[Math.floor(Math.random() * background.length)];
+            document.getElementById("mainCaptcha").style.backgroundImage = "url('./assets/" + back + ".jpg')";
+        }
+
+        function CheckValidCaptcha() {
+
+        }
+
+        function removeSpaces(string) {
+            return string.split(' ').join('');
+        }
+    </script>
 </head>
 
-<body>
+<body onload="generateCaptcha()">
     <section class="container forms">
 
         <div class="form login">
@@ -42,6 +74,17 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
                     <div class=" field input-field">
                         <input type="password" placeholder="Password" class="password" id="pass" name="upass" required>
                         <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <div class=" field input-field">
+                        <input type="text" id="mainCaptcha" readonly="readonly"
+                            style="text-align:center; font-size: 20px; color: white;" />
+                        <!-- <img style="width: 10px; height: 10px;" src="./assets/refresh.png" /> -->
+                    </div>
+
+                    <div class=" field input-field">
+                        <!-- <input type="button" id="refresh" value="Refresh" onclick="generateCaptcha();" /> -->
+                        <input type="text" placeholder="Captcha" class="input" id="captcha" name="captcha" required>
                     </div>
 
                     <div class="form-link">

@@ -42,10 +42,7 @@
 
 <body>
 
-    <div id="main">
-
-
-
+    <div id="main" class="main">
         <div id="dish-items">
             <h1>Our food items</h1>
             <div id="menu-card" menu-cards></div>

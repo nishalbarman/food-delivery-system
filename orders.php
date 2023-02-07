@@ -59,7 +59,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
 
     <?php include('header.php'); ?>
 
-    <div id="main">
+    <div id="main" class="main">
         <div id="dish-items">
             <h1>My Orders</h1>
             <div id="order-list" order-cards></div>
@@ -150,6 +150,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
     fetch("http://localhost/food/api/orders.php", options)
         .then((res) => res.json())
         .then((data) => {
+            console.log(data);
             if (data.length === 0) {
                 const order = orderTemplate.content.cloneNode(true).children[0];
                 const orderDate = order.querySelector("[order-date]");
@@ -191,6 +192,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
                 const orderImage = order.querySelector("[order-image]");
                 const orderTitle = order.querySelector("[order-title]");
                 const orderSubtitle = order.querySelector("[order-subtitle]");
+                const orderButton = order.querySelector("[order-button]");
 
                 orderDate.textContent = user.date;
                 orderPrice.textContent = user.amount;
@@ -201,6 +203,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
                 orderImage.src = "http://localhost/food/food-images/" + user.foodimage;
                 orderTitle.textContent = user.foodtitle;
                 orderSubtitle.textContent = user.foodsubtitle;
+                orderButton.setAttribute("onclick", "openDetails(" + user.id + ")");
 
                 orderCards.appendChild(order);
                 return {
@@ -211,6 +214,10 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
                 };
             });
         });
+
+    function openDetails(id) {
+        window.location = "http://localhost/food/details.php?id=" + id;
+    }
     </script>
     <script src="js/sidenav.js"></script>
 </body>

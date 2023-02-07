@@ -34,6 +34,64 @@ a:hover {
     display: inline-block;
     margin: 1.4em 1em 1em 1em;
 }
+
+.main {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+@media only screen and (max-width: 2906px) {
+    .main {
+        margin-left: 15rem;
+        margin-right: 15rem;
+    }
+}
+
+@media only screen and (max-width: 2197px) {
+    .main {
+        margin-left: 8rem;
+        margin-right: 8rem;
+    }
+}
+
+@media only screen and (max-width: 1159px) {
+    .main {
+        margin-left: 6rem;
+        margin-right: 6rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .main {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .flip-card {
+        height: auto;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        margin-bottom: 150px;
+        perspective: 1000px;
+        background-color: none;
+    }
+
+    /* .flip-card {
+        height: auto;
+        width: 200px;
+        aspect-ratio: 1 / 1;
+        margin-bottom: 150px;
+        perspective: 1000px;
+        background-color: none;
+    } */
+}
+
+@media only screen and (max-width: 600px) {
+    .main {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
 </style>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 

@@ -27,10 +27,10 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
     <link rel="stylesheet" href="./styles/head.css" />
     <link rel="stylesheet" href="./styles/cardflip.css" />
     <script>
-    function logOut() {
-        window.localStorage.setItem("authToken", '');
-        window.localStorage.setItem("userId", '');
-    }
+        function logOut() {
+            window.localStorage.setItem("authToken", '');
+            window.localStorage.setItem("userId", '');
+        }
 
     // function setButton() {
     //     let loggedin = window.localStorage.getItem("authToken");
@@ -52,7 +52,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
 
     <?php include('header.php'); ?>
 
-    <div id="main" style="margin-top: 20px;">
+    <div id="main" style="margin-top: 20px;" class="main">
         <div class="slideshow-container" slide-show>
             <template data-banner>
                 <div class="mySlides fade">
@@ -146,36 +146,36 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
     <script src="./js/index.js"></script>
     <script src="./js/sidenav.js"></script>
     <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {
-            slideIndex = 1
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
         }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
     </script>
 
 </body>

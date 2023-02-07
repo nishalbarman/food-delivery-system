@@ -31,8 +31,8 @@ session_start();
 
     <?php include('header.php'); ?>
 
-    <div id="main">
-        <div class="searchBar" style="margin-top: 40px">
+    <div id="main" class="main">
+        <div class="searchBar" style="margin-top: 40px" class="main">
             <form id="search-form" class="search-form">
                 <input class="sInput" type="search" placeholder="Search" aria-label="Search" searchInput>
             </form>
@@ -176,9 +176,9 @@ session_start();
         if (loggedin == "") {
             alert("Need to be logged in to place an order.");
         } else {
-            // window.location = "./payu/index.php?id=" + id + "&userid=" + userid;
-            window.location =
-                "http://localhost/food/payu/i/ndex.php?id=" + id + "&userid=" + userid;
+            window.location = "./payu/index.php?id=" + id + "&userid=" + userid;
+            // window.location =
+            //     "http://localhost/food/payu/i/ndex.php?id=" + id + "&userid=" + userid;
         }
     }
 

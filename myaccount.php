@@ -66,7 +66,7 @@ if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
 
     <?php include('header.php'); ?>
 
-    <div id="main" style="margin-top: 20px;">
+    <div id="main" style="margin-top: 20px;" class="main">
         <div class="container">
             <div class="side-bar">
                 <div class="user-info">
