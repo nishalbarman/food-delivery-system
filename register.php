@@ -5,16 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tomato - Register</title>
+    <title>Food Clash - Register</title>
     <link rel="stylesheet" href="styles/reg.css" />
 </head>
 
 <body>
-    <div class=" bg-image"></div>
 
-    </div>
-
-    <!-- <div class="formWrapper"> -->
     <div class="formWrapper" id="formWrapper">
         <!-- <form action="api/login.php" method="post" enctype="application/x-www-form-urlencoded" id="login_form"> -->
         <form id="loginForm">

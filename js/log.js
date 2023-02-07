@@ -1,6 +1,7 @@
-let loggedin = window.localStorage.getItem("authToken");
-if (loggedin !== "" && loggedin === "success") {
-  window.location = "index.html";
+// let loggedin = window.localStorage.getItem("authToken");
+let loggedin = "<?php echo $_SESSION['logged'];?>";
+if (loggedin !== "" && loggedin === "true") {
+  window.location = "index.php";
 }
 
 const API = "./api/send-mail.php";
@@ -55,10 +56,8 @@ regBtn.addEventListener("click", () => {
       console.log(this.responseText);
       let jsonObj = JSON.parse(this.responseText);
       if (jsonObj.success === true) {
-        // alert("Otp has been sent.");
         document.getElementById("otp-status").innerHTML = "OTP sent on email";
       } else {
-        // alert("Otp failed.");
         document.getElementById("otp-status").innerHTML =
           "OTP sent failed, try again";
       }
@@ -79,7 +78,6 @@ otpBtn.addEventListener("click", () => {
     regMe();
   } else {
     alert("Invalid OTP");
-    // document.getElementById("errorTxt").style.display = "block";
     document.getElementById("otpField").value = "";
   }
 });
@@ -95,9 +93,10 @@ function regMe() {
       let jsonObj = JSON.parse(this.responseText);
       if (jsonObj["success"] === true) {
         alert("Registration Successfull");
-        window.localStorage.setItem("authToken", "success");
-        window.localStorage.setItem("userId", jsonObj["email"]);
-        window.location = "index.html";
+        // window.localStorage.setItem("authToken", "success");
+        // window.localStorage.setItem("userId", jsonObj["email"]);
+        // window.location = "index.html";
+        window.location = "http://localhost/food/login.php";
       } else {
         alert(jsonObj["message"]);
       }
@@ -122,9 +121,10 @@ function logMe() {
       let jsonObj = JSON.parse(this.responseText);
       if (jsonObj["success"] === true) {
         alert(jsonObj["message"]);
-        window.localStorage.setItem("authToken", "success");
-        window.localStorage.setItem("userId", jsonObj["email"]);
-        window.location = "./index.html";
+        // window.localStorage.setItem("authToken", "success");
+        // window.localStorage.setItem("userId", jsonObj["email"]);
+        window.location = "./index.php";
+        // window.location = "http://localhost/food/login.php";
       } else {
         alert("Invalid Username Or Password");
       }

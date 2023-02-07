@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!(isset($_SESSION['logged']) && $_SESSION['logged'] === true)) {
+    // $_SESSION['fullname'] = $row['fname'] + $row['lname'];
+    // $_SESSION['addresss'] = $row['address'];
+    // $_SESSION['email'] = $row['email'];
+    // $_SESSION['phone'] = $row['phone'];
+    // $_SESSION['logged'] = true;
+    // $_SESSION['role'] = 'user';
+    // header("location: ./login.php");
+    // echo 'not logged';
+    // exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,58 +24,36 @@
     <title>Tomato - Food order online</title>
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/slideshow.css" />
-    <!-- <link rel="stylesheet" href="./styles/sidenav.css" /> -->
     <link rel="stylesheet" href="./styles/head.css" />
-    <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/cardflip.css" />
     <script>
-        function logOut() {
-            window.localStorage.setItem("authToken", '');
-            window.localStorage.setItem("userId", '');
-        }
+    function logOut() {
+        window.localStorage.setItem("authToken", '');
+        window.localStorage.setItem("userId", '');
+    }
 
-        function setButton() {
-            let loggedin = window.localStorage.getItem("authToken");
-            if (!(loggedin !== "" && loggedin === "success")) {
-                document.getElementById('loginBtnHead').textContent = "LogIn";
-                document.getElementById('loginBtnHead').href = "./log.html";
-                document.getElementById('loginBtnHead').setAttribute('onclick', '');
-                // document.querySelectorAll('[hide-me]').forEach(element => {
-                //     element.style.display = "none";
-                // });
-            } else {
-                document.querySelectorAll('[hide-me]').forEach(element => {
-                    element.style.display = "block";
-                });
-            }
+    // function setButton() {
+    //     let loggedin = window.localStorage.getItem("authToken");
+    //     if (!(loggedin !== "" && loggedin === "success")) {
+    //         document.getElementById('loginBtnHead').textContent = "LogIn";
+    //         document.getElementById('loginBtnHead').href = "./log.html";
+    //         document.getElementById('loginBtnHead').setAttribute('onclick', '');
+    //     } else {
+    //         document.querySelectorAll('[hide-me]').forEach(element => {
+    //             element.style.display = "block";
+    //         });
+    //     }
 
-        }
-
+    // }
     </script>
 </head>
 
-<body onload="setButton()">
+<body>
 
-    <header class="site-header">
-        <div class="site-identity">
-            <h1><a href="#">Food Clash</a></h1>
-        </div>
-        <nav class="site-navigation">
-            <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Food Menu</a></li>
-                <li><a hide-me href="orders.html" style="display: none;">My Orders</a></li>
-                <li><a hide-me href="myaccount.html" style="display: none;">My Account</a></li>
-                <li><a id="loginBtnHead" href="log.html" onclick="logOut()">LogOut</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
+    <?php include('header.php'); ?>
 
     <div id="main" style="margin-top: 20px;">
         <div class="slideshow-container" slide-show>
-
             <template data-banner>
                 <div class="mySlides fade">
                     <div class="numbertext" num-data></div>
@@ -67,10 +61,8 @@
                     <div class="text" caption-data></div>
                 </div>
             </template>
-
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
-
         </div>
         <br>
 
@@ -80,8 +72,6 @@
             <span class="dot"></span>
         </template>
 
-        <!-- <span class="dot" onclick="currentSlide(2)"></span> -->
-
         <div style="height: 10px;"></div>
 
         <!-- Top Card Foods -->
@@ -89,22 +79,16 @@
             <div class="cardHeaderText" style="margin-bottom: 10px;">
                 <h1>Categories</h1>
             </div>
-
             <div id="category-card" class="category-card" category-cards></div>
-
-            <!-- <div id="cardView" class="cardContent"></div> -->
-
         </div>
         <div style="height: 5px;"></div>
 
-        <!-- Food Menu -->
         <div id="menuWrapper" class="menu-wrapper">
             <div class="menu-header-text">
                 <h1>Explore the Menu</h1>
             </div>
             <div id="menu-card" menu-cards></div>
 
-            <!-- The New Menu Template -->
             <template data-menu-template>
                 <div>
                     <div class="flip-card">
@@ -127,7 +111,6 @@
                                     <div class="cards-img-wrapper" style="padding: 10px;">
                                         <label hidden></label>
                                         <label id="card-subtitle" data-subtitle style="padding: 10px;"></label>
-
                                     </div>
                                     <div class="cards-body">
                                         <div class="view-btn-wrapper"><button class="view-btn"
@@ -141,86 +124,59 @@
                     </div>
             </template>
 
-
             <template data-category-template>
                 <div>
                     <div class="cards" card-bg>
                         <div class="cards-img-wrapper">
                             <label id="card-title" class="cards-title-center" data-title></label>
                         </div>
-                        <!-- <div class="cards-body">
-                            <div class="view-btn-wrapper"><button class="view-btn" data-button></button>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </template>
 
-
-            <!-- The Old Menu Template -->
-
-            <!-- <template data-menu-template>
-                <div class="menu-item" template>
-                    <div class="menu-img">
-                        <img src="" class="menu-img-el" data-image />
-                    </div>
-                    <div class="menu-body">
-                        <div class="menu-title-wrapper">
-                            <label data-title></label>
-                        </div>
-                        <div class="menu-sub-wrapper">
-                            <label data-subtitle></label>
-                        </div>
-                        <div class="menu-btn-wrapper">
-                            <button class="buy-btn" data-button></button>
-                        </div>
-                    </div>
-                </div>
-            </template> -->
-
             <div class="see-more">
-                <a href="./menu.html">
+                <a href="./menu.php">
                     <h2 style="text-align:center;">See More</h2>
                 </a>
+
             </div>
         </div>
     </div>
-
-
     </div>
     <script src="./js/index.js"></script>
     <script src="./js/sidenav.js"></script>
     <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-        // Slide 
-        let slideIndex = 1;
-        showSlides(slideIndex);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
         }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        if (n < 1) {
+            slideIndex = slides.length
         }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
     </script>
-
 
 </body>
 

@@ -1,6 +1,9 @@
-let loggedin = window.localStorage.getItem("authToken");
-if (!(loggedin !== "" && loggedin === "success")) {
-  alert("you are not logged, order can not be placed");
+// let loggedin = window.localStorage.getItem("authToken");
+let loggedin =
+  "<?php if (isset($_SESSION['logged'])) {echo $_SESSION['logged'];} else {echo '';} ?>";
+console.log(loggedin);
+if (loggedin === "") {
+  alert("You are not logged, order can't be placed.");
 }
 
 let userid = window.localStorage.getItem("userId");
@@ -14,37 +17,30 @@ if (cat === "") {
   document.getElementById("title-head").innerHTML =
     cat + " <span class='show-all' onclick='loadAll()'>( Show all )</span> ";
 
-  // <button class='' onclick='loadAll()'>Show all</button>
-
   menuApi = "./api/get-menu.php?cat=" + cat;
   window.localStorage.setItem("cat", "");
 }
 
 const menuTemplate = document.querySelector("[data-menu-template]");
 const menuCards = document.querySelector("[menu-cards]");
-// const searchInput = document.querySelector("#searchInput");
-const search = document.querySelector(".searchInput");
+const search = document.querySelector("[searchInput]");
 let users = [];
 
-// searchInput.addEventListener("input", (e) => {
-//   value = e.target.value.toLowerCase();
-//   if (value === "") {
-//     document.getElementsByClassName("menu-items");
-//   }
-//   console.log(value);
-//   users.forEach((user) => {
-//     let t = user.title.toLowerCase();
-//     let s = user.subtitle.toLowerCase();
+search.addEventListener("input", (e) => {
+  value = e.target.value.toLowerCase();
+  console.log(value);
 
-//     const isVisible = t.includes(value) || s.includes(value);
+  users.forEach((user) => {
+    let t = user.title.toLowerCase();
+    let s = user.subtitle.toLowerCase();
 
-//     isVisible
-//       ? user.element.classList.remove("hide")
-//       : user.element.classList.add("hide");
-//   });
-// });
+    const isVisible = t.includes(value) || s.includes(value);
 
-// New menu template style
+    isVisible
+      ? user.element.classList.remove("hide")
+      : user.element.classList.add("hide");
+  });
+});
 
 fetch(menuApi)
   .then((res) => res.json())
@@ -79,40 +75,26 @@ fetch(menuApi)
 function loadAll() {
   window.localStorage.setItem("cat", "");
   console.log(cat);
-  window.location = "./menu.html";
+  window.location = "./menu.php";
 }
 
 function buyFood(id) {
-  if (!(loggedin !== "" && loggedin === "success")) {
-    window.location = "login.html";
+  // let loggedin = window.localStorage.getItem("authToken");
+  let loggedin = "<?php echo $_SESSION['logged']; ?>";
+  if (!(loggedin !== "" && loggedin === "true")) {
+    alert("Need to be logged in to place an order.");
   } else {
+    // window.location = "./payu/index.php?id=" + id + "&userid=" + userid;
     window.location =
-      "http:///localhost/food/payu/index.php?id=" + id + "&userid=" + userid;
+      "http://localhost/food/payu/i/ndex.php?id=" + id + "&userid=" + userid;
   }
 }
 
-// Old menu style template
-// fetch("http://localhost/food/api/get-menu.php")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     users = data.map((user) => {
-//       const menu = menuTemplate.content.cloneNode(true).children[0];
-//       const img = menu.querySelector("[data-image]");
-//       const title = menu.querySelector("[data-title]");
-//       const subtitle = menu.querySelector("[data-subtitle]");
-//       const button = menu.querySelector("[data-button]");
-
-//       img.src = "http://localhost/food/food-images/" + user.image;
-//       title.textContent = user.title;
-//       subtitle.textContent = user.subtitle;
-//       button.textContent = user.amount + " /-";
-//       button.setAttribute("onclick", "buyFood(" + user.id + ")");
-//       menuCards.appendChild(menu);
-//       return {
-//         title: user.title,
-//         subtitle: user.subtitle,
-//         image: user.image,
-//         element: menu,
-//       };
-//     });
-//   });
+// function buyFood(id) {
+//   if (!(loggedin !== "" && loggedin === "true")) {
+//     window.location = "login.html";
+//   } else {
+//     window.location =
+//       "http://localhost/food/payu/i/ndex.php?id=" + id + "&userid=" + userid;
+//   }
+// }

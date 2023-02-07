@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
+    // $_SESSION['fullname'] = $row['fname'] + $row['lname'];
+    // $_SESSION['addresss'] = $row['address'];
+    // $_SESSION['email'] = $row['email'];
+    // $_SESSION['phone'] = $row['phone'];
+    // $_SESSION['logged'] = true;
+    // $_SESSION['role'] = 'user';
+    header("location: ./index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,6 +83,10 @@
 
                         <div class="field input-field">
                             <input type="address" placeholder="Address" class="input" name="address" required>
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="text" placeholder="Pincode" class="input" name="pincode" required>
                         </div>
 
                         <div class="field input-field">

@@ -1,5 +1,7 @@
-let loggedin = window.localStorage.getItem("authToken");
-if (loggedin !== "" && loggedin === "success") {
+// let loggedin = window.localStorage.getItem("authToken");
+let loggedin =
+  "<?php if (isset($_SESSION['logged'])) { echo $_SESSION['logged'];} else {echo '';} ?>";
+if (loggedin !== "") {
   window.location = "index.html";
 }
 

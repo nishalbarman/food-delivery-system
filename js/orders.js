@@ -1,27 +1,10 @@
-let userid = window.localStorage.getItem("userId");
+// let userid = window.localStorage.getItem("userId");
+let userid =
+  "<?php if (isset($_SESSION['logged'])) { echo $_SESSION['email']; } else { echo '';} ?>";
 console.log(userid);
 
 const orderTemplate = document.querySelector("[data-order-template]");
 const orderCards = document.querySelector("[order-cards]");
-// const searchInput = document.querySelector("#searchInput");
-// const searchView = document.getElementById("searchView");
-// const search = document.querySelector(".searchInput");
-// let users = [];
-
-// searchInput.addEventListener("input", (e) => {
-//   value = e.target.value.toLowerCase();
-//   console.log(value);
-//   users.forEach((user) => {
-//     let t = user.title.toLowerCase();
-//     let s = user.subtitle.toLowerCase();
-//     let p = user.amount.toLowerCase();
-//     const isVisible = t.includes(value) || s.toLowerCase().includes(value);
-
-//     isVisible
-//       ? user.element.classList.remove("hide")
-//       : user.element.classList.add("hide");
-//   });
-// });
 
 let options = {
   method: "POST",
@@ -75,7 +58,6 @@ fetch("http://localhost/food/api/orders.php", options)
       const orderImage = order.querySelector("[order-image]");
       const orderTitle = order.querySelector("[order-title]");
       const orderSubtitle = order.querySelector("[order-subtitle]");
-      // const orderButton = order.querySelector("[order-details]");
 
       orderDate.textContent = user.date;
       orderPrice.textContent = user.amount;

@@ -6,6 +6,7 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 $password = $_POST['password'];
+$pincode = $_POST['pincode'];
 
 if ($conn->connect_errno) {
     sendJson(true, $conn->connect_error, '');
@@ -13,7 +14,7 @@ if ($conn->connect_errno) {
 
 check($email, $conn);
 
-$sql = "INSERT INTO `users`(`phone`, `fname`, `address`, `password`, `email`) VALUES ('$phone','$name','$address','$password', '$email')";
+$sql = "INSERT INTO `users`(`phone`, `fname`, `address`, `password`, `email`, `pincode`) VALUES ('$phone','$name','$address','$password', '$email', '$pincode')";
 
 
 if (mysqli_query($conn, $sql)) {

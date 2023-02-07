@@ -28,11 +28,11 @@ h3 {
 
 .searchBar {
   display: flex;
-  position: relative;
-  left: 20%;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  /* left: 20%; */
+  /* top: 30%; */
+  /* left: 50%;
+  transform: translate(-50%, -50%); */
   width: 70%;
 }
 
