@@ -66,33 +66,6 @@
             </ul>
         </nav>
     </header>
-    <!-- <div class="bg-image">
-        <div id="navbar">
-
-            <div class="header">
-                <span class="menu" onclick="openNav()">&#9776;</span>
-                <a href="#" class="logo">Tomato</a>
-            </div>
-            <div id="mySidenav" class="sidenav">
-                <img class="logoimg" src="assets/logo_tomato.png" />
-                <span id="closebtn" class="closebtn" onclick="closeNav()">&times;</span>
-                <a href="index.html">Home</a>
-                <a href="orders.html">My Orders</a>
-                <a href="myaccount.html">My Account</a>
-                <a href="logout.html" onclick="logOut()">LogOut</a>
-            </div>
-
-        </div>
-        <div class="searchBar">
-            <form id="search-form" class="search-form" role="search">
-                <input id="searchInput" class="sInput" type="search" placeholder="Search" aria-label="Search">
-            </form>
-            <button type="button" class="searchBtn"
-                onclick="smoothScroll(document.getElementById('order-list'))">Search</button>
-
-        </div>
-    </div> -->
-
 
     <div id="main" style="margin-top: 20px;">
         <div class="container">
@@ -200,17 +173,17 @@
                     <div class="name">
                         <div class="inputWrapper">
                             <label class="phone">&#x2192; Email Address <span class="required">*</span> &#x2190;</label>
-                            <input id="email2" name="email" type="emails" class="inputs" disabled email />
+                            <input id="email2" name="email" type="email" class="inputs" disabled email />
                         </div>
-
                     </div>
-                    <!-- <div class="name">
-                        <div class="inputWrapper">
-                            <label class="phone">&#x2192; Phone Number <span class="required">*</span> &#x2190;</label>
-                            <input name="fname" id="fname" type="text" class="inputs" />
-                        </div>
 
-                    </div> -->
+                    <div class="name">
+                        <div class="inputWrapper">
+                            <label class="phone">&#x2192; Subject / Title <span class="required">*</span>
+                                &#x2190;</label>
+                            <input id="title" name="title" type="text" class="inputs" title />
+                        </div>
+                    </div>
 
                     <div class="name">
                         <div class="inputWrapper" style="height: 100px;">
@@ -218,7 +191,6 @@
                             <textarea name="feed" id="feed" type="text" class="inputs" placeholder="Feedback" value=""
                                 feedback></textarea>
                         </div>
-
                     </div>
 
                     <div class="name">
@@ -239,31 +211,26 @@
     <script>
         const submitFeed = document.querySelector("#submit-feed");
         submitFeed.addEventListener('click', () => {
-            if (document.querySelector("[feedback]").value === '') {
-                alert("Feedback is empty.");
+            if (document.querySelector("[feedback]").value === '' || document.querySelector("[title]").value === '') {
+                alert("All fields are required.");
             } else {
                 let formdata = new FormData();
-
                 formdata.append("email", window.localStorage.getItem("userId"));
-                formdata.append("title", "FoodDelivery");
-                formdata.append("feedback", document.getElementById('feed'));
+                formdata.append("title", document.getElementById('title').value);
+                formdata.append("feedback", document.getElementById('feed').value);
 
                 let postData = {
                     body: formdata,
-                    header: {
-                        // "Content-Type": "multipart/form-data",
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
                     method: "post"
                 }
 
                 fetch("./api/post-feedback.php", postData).then(res => res.json()).then(data => {
-                    // if (data.success === true) {
                     if (data.success === true) {
                         document.getElementById('feed').value = "";
+                        alert("Your feedback has been recorded, thank you.");
+                    } else {
+                        alert("Some error has occured, feedback failed to send.");
                     }
-                    alert(data.message);
-                    // }
                 })
             }
         })
