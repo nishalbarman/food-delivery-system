@@ -1,7 +1,7 @@
 <?php
 include './../config/db.php';
 
-$sql = 'select * from foodbanner ';
+$sql = 'select * from foodbanner';
 
 $res = mysqli_query($conn, $sql);
 $num_rows = mysqli_num_rows($res);
