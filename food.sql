@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2022 at 04:55 AM
+-- Generation Time: Feb 07, 2023 at 06:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `phone`, `name`, `password`) VALUES
-(8, 'nishalbarman@gmail.com', '9101114906', 'NISHAL BARMAN', 'admin');
+(1, 'nishalbarman@gmail.com', '9101114906', 'Nishal Barman', 'password');
 
 -- --------------------------------------------------------
 
@@ -68,17 +68,24 @@ INSERT INTO `cards` (`id`, `title`, `image`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Table structure for table `foodbanner`
 --
 
-CREATE TABLE `feedback` (
-  `id` int(11) NOT NULL,
-  `foodid` bigint(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `comment` varchar(255) NOT NULL,
-  `likes` bigint(255) NOT NULL,
+CREATE TABLE `foodbanner` (
+  `id` int(255) NOT NULL,
+  `bannert` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `foodbanner`
+--
+
+INSERT INTO `foodbanner` (`id`, `bannert`, `url`, `image`) VALUES
+(1, 'Subscribe our youtube channel', 'https://youtube.com', 'banner3.webp'),
+(2, 'Visit Our Instagram', '//google.com', 'banner4.jpg'),
+(3, 'Order food Now', '//techassam.in', 'banner5.jpg');
 
 -- --------------------------------------------------------
 
@@ -100,6 +107,19 @@ CREATE TABLE `foodcategory` (
 INSERT INTO `foodcategory` (`id`, `catname`, `items`, `image`) VALUES
 (1, 'Veg Items', '7', '1671346856_sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg'),
 (4, 'Non-Veg Items', '7', '1671369370_Street-food-non-veg.webp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `foodfeedback`
+--
+
+CREATE TABLE `foodfeedback` (
+  `id` int(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `feedback` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -166,10 +186,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `phone`, `fname`, `foodtitle`, `foodsubtitle`, `foodimage`, `address`, `amount`, `transactionid`, `ordertype`, `status`, `location`, `date`, `email`) VALUES
-(181, '9101114906', 'Nishal', 'Fried Chicken', 'Best fried chicken of our locality we are proud', 'chicken.jpeg', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', 100, '8845750d827f0f39d217', 'Prepaid', 'Delivered', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', '15/12/2022 10:52:59 am', 'nishalbarman@gmail.com'),
-(182, '9101114906', 'Nishal', 'Roti', 'Best roti of our locality we are proud', 'roti.webp', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', 100, 'c8448cd92519f7d3679f', 'Prepaid', 'Pending', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', '18/12/2022 10:14:24 am', 'nishalbarman@gmail.com'),
-(183, '9101114906', 'Nishal', 'Roti', 'Best roti of our locality we are proud', 'roti.webp', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', 100, '0b73dbef4595d2a8dea8', 'Prepaid', 'Pending', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', '19/12/2022 11:38:43 am', 'nishalbarman@gmail.com'),
-(184, '9101114906', 'Nishal', 'Burger', 'Best burger of our locality we are proud', 'burger.jpg', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', 100, '8b002c2e45ea346907d1', 'Prepaid', 'Pending', 'Vill. P.O. - Balikaria  Nalbari  Nalbari - Kaithalkuchi Road', '20/12/2022 09:18:40 am', 'nishalbarman@gmail.com');
+(191, '9101114906', 'Nishal', 'Burger', 'Best burger of our locality we are proud', 'burger.jpg', 'Balikaria  Nalbari  781341  Assam', 1001, '576dd1960655309b24ae', 'Prepaid', 'Pending', 'Balikaria  Nalbari  781341  Assam', '07/02/2023 09:07:38 pm', 'nishalbarman@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -182,17 +199,19 @@ CREATE TABLE `users` (
   `phone` varchar(13) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
+  `gender` varchar(255) NOT NULL,
   `address` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `pincode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `phone`, `fname`, `lname`, `address`, `password`, `email`) VALUES
-(9, '9101114906', 'NISHAL BARMAN', '', '2510', 'password', 'nishalbarman@gmail.com');
+INSERT INTO `users` (`id`, `phone`, `fname`, `lname`, `gender`, `address`, `password`, `email`, `pincode`) VALUES
+(1, '9101114906', 'Nishal', 'Barman', 'Male', 'Vill./P.O. - Balikaria, Nalbari, Nalbari - Kaithalkuchi Road', 'password', 'nishalbarman@gmail.com', '781341');
 
 -- --------------------------------------------------------
 
@@ -242,9 +261,9 @@ ALTER TABLE `cards`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `feedback`
+-- Indexes for table `foodbanner`
 --
-ALTER TABLE `feedback`
+ALTER TABLE `foodbanner`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -253,6 +272,12 @@ ALTER TABLE `feedback`
 ALTER TABLE `foodcategory`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `catname` (`catname`);
+
+--
+-- Indexes for table `foodfeedback`
+--
+ALTER TABLE `foodfeedback`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `fooditems`
@@ -282,7 +307,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cards`
@@ -291,16 +316,22 @@ ALTER TABLE `cards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT for table `foodbanner`
 --
-ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `foodbanner`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `foodcategory`
 --
 ALTER TABLE `foodcategory`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `foodfeedback`
+--
+ALTER TABLE `foodfeedback`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fooditems`
@@ -312,13 +343,13 @@ ALTER TABLE `fooditems`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
